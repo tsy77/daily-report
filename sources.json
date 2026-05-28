@@ -1,0 +1,60 @@
+{
+  "sources": [
+    {
+      "id": "reddit-ecommerce",
+      "name": "Reddit 电商社区",
+      "type": "reddit",
+      "subreddits": ["ecommerce", "shopify", "FulfillmentByAmazon", "Etsy", "ecommercecommunity"],
+      "keywords": ["AI", "tool", "image", "video", "product photo", "listing", "automation", "SaaS", "generator"],
+      "enabled": true
+    },
+    {
+      "id": "reddit-ai",
+      "name": "Reddit AI/开源社区",
+      "type": "reddit",
+      "subreddits": ["SaaS", "artificial", "aivideo", "StableDiffusion", "Midjourney"],
+      "keywords": ["ecommerce", "product", "shopify", "listing", "commerce", "seller", "store"],
+      "enabled": true
+    },
+    {
+      "id": "hackernews",
+      "name": "Hacker News",
+      "type": "hackernews",
+      "queries": ["ecommerce AI", "product image generation", "AI video commerce", "shopify AI tool", "AI listing generator"],
+      "enabled": true
+    },
+    {
+      "id": "producthunt",
+      "name": "Product Hunt",
+      "type": "rss",
+      "url": "https://www.producthunt.com/feed",
+      "keywords": ["ecommerce", "AI", "image", "video", "shopify", "product photography", "listing"],
+      "enabled": true
+    },
+    {
+      "id": "twitter-ecommerce",
+      "name": "X/Twitter 电商AI",
+      "type": "twitter",
+      "queries": ["ecommerce AI tool", "product photography AI", "AI video generator commerce", "shopify AI tool", "AI listing generator ecommerce"],
+      "accounts": [
+        {"screen_name": "levelsio", "id": "1577241403"}
+      ],
+      "enabled": true
+    },
+    {
+      "id": "shopify-changelog",
+      "name": "Shopify Changelog",
+      "type": "rss",
+      "url": "https://shopify.dev/changelog/feed.xml",
+      "keywords": ["AI", "API", "image", "video", "automation", "tool"],
+      "enabled": true
+    },
+    {
+      "id": "manual",
+      "name": "手动补充源",
+      "type": "manual",
+      "file": "fetch-manual.txt",
+      "enabled": false
+    }
+  ]
+}

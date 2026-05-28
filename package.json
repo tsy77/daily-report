@@ -1,0 +1,16 @@
+{
+  "name": "daily-report",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "电商痛点需求雷达 - 每日信号抓取与分析",
+  "scripts": {
+    "signal": "node signal.mjs",
+    "signal:dry": "node signal.mjs --dry-run",
+    "signal:export": "node signal.mjs --export"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "fast-xml-parser": "^4.5.0",
+    "node-fetch": "^3.3.2"
+  }
+}
