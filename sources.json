@@ -4,15 +4,15 @@
       "id": "reddit-ecommerce",
       "name": "Reddit 电商社区",
       "type": "reddit",
-      "subreddits": ["ecommerce", "shopify", "FulfillmentByAmazon", "Etsy", "ecommercecommunity"],
-      "keywords": ["AI", "tool", "image", "video", "product photo", "listing", "automation", "SaaS", "generator"],
+      "subreddits": ["ecommerce", "shopify", "FulfillmentByAmazon", "Etsy", "ecommercecommunity", "amazonseller", "EtsySellers", "dropship", "shopifydev", "AmazonFBATips"],
+      "keywords": ["AI", "tool", "image", "video", "product photo", "listing", "automation", "SaaS", "generator", "pain", "problem", "frustrated", "hate", "annoying", "broken", "help"],
       "enabled": true
     },
     {
       "id": "reddit-ai",
       "name": "Reddit AI/开源社区",
       "type": "reddit",
-      "subreddits": ["SaaS", "artificial", "aivideo", "StableDiffusion", "Midjourney"],
+      "subreddits": ["SaaS", "artificial", "aivideo", "ecommerce_uk", "ecommerce_au"],
       "keywords": ["ecommerce", "product", "shopify", "listing", "commerce", "seller", "store"],
       "enabled": true
     },
@@ -37,7 +37,11 @@
       "type": "twitter",
       "queries": ["ecommerce AI tool", "product photography AI", "AI video generator commerce", "shopify AI tool", "AI listing generator ecommerce"],
       "accounts": [
-        {"screen_name": "levelsio", "id": "1577241403"}
+        {"screen_name": "levelsio", "id": "1577241403"},
+        {"screen_name": "Shopify", "id": "17125798"},
+        {"screen_name": "haraboradventures", "id": "1434683623833915392"},
+        {"screen_name": "mordenai", "id": "1644043129523535872"},
+        {"screen_name": "ecommercefar", "id": "1476587596614934530"}
       ],
       "enabled": true
     },
