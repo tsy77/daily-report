@@ -1,4 +1,12 @@
 import fetch from 'node-fetch';
+import { XMLParser } from 'fast-xml-parser';
+
+const parser = new XMLParser({
+  ignoreAttributes: false,
+  attributeNamePrefix: '@_',
+  processEntities: false,
+  htmlEntities: false,
+});
 
 function matchesKeywords(text, keywords) {
   if (!keywords || keywords.length === 0) return true;
@@ -12,9 +20,9 @@ export async function fetchReddit(sourceConfig) {
 
   for (const sub of subreddits) {
     try {
-      const url = `https://www.reddit.com/r/${sub}/new.json?limit=25`;
+      const url = `https://www.reddit.com/r/${sub}/new.rss`;
       const res = await fetch(url, {
-        headers: { 'User-Agent': 'DailyReportBot/1.0' },
+        headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36' },
         timeout: 15000,
       });
       if (!res.ok) {
@@ -22,26 +30,33 @@ export async function fetchReddit(sourceConfig) {
         continue;
       }
 
-      const data = await res.json();
-      const posts = data?.data?.children || [];
+      const xml = await res.text();
+      const parsed = parser.parse(xml);
+      const entries = parsed?.feed?.entry || [];
+      const raw = Array.isArray(entries) ? entries : [entries];
 
-      for (const post of posts) {
-        const d = post.data;
-        const text = `${d.title} ${d.selftext || ''}`;
+      let matched = 0;
+      for (const entry of raw) {
+        if (!entry || typeof entry !== 'object') continue;
+
+        const title = entry.title || '';
+        const link = entry.link?.['@_href'] || entry.link || '';
+        const content = entry.content?.['#text'] || entry.content || entry.summary || '';
+        const text = `${title} ${content}`;
+
         if (matchesKeywords(text, keywords)) {
+          matched++;
           signals.push({
             source: `reddit/r/${sub}`,
-            title: d.title,
-            link: `https://reddit.com${d.permalink}`,
-            content: d.selftext || d.title,
-            date: new Date(d.created_utc * 1000).toISOString(),
-            score: d.score,
-            numComments: d.num_comments,
+            title,
+            link,
+            content,
+            date: entry.published || entry.updated || new Date().toISOString(),
           });
         }
       }
 
-      console.log(`[Reddit] r/${sub}: fetched ${posts.length} posts`);
+      console.log(`[Reddit] r/${sub}: ${matched}/${raw.length} posts matched`);
     } catch (err) {
       console.warn(`[Reddit] Error fetching r/${sub}: ${err.message}`);
     }

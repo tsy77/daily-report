@@ -107,6 +107,21 @@ fi
 
 # ── Step 4: Summary for stdout (hermes → weixin) ──
 REPORT_URL="https://tsy77.github.io/daily-report/signal-${DATE}.html"
-THEME=$(grep -oP '"theme"\s*:\s*"\K[^"]+' "$LOGFILE" 2>/dev/null | tail -1 || echo "daily signal report")
+THEME=$(node -e "
+const fs = require('fs');
+const files = fs.readdirSync('output').filter(f => f.startsWith('cluster-') && f.endsWith('.json'));
+let all = [];
+for (const f of files) {
+  try { all.push(...JSON.parse(fs.readFileSync('output/' + f, 'utf8'))); } catch {}
+}
+all.sort((a, b) => (b.score || 0) - (a.score || 0));
+console.log(all[0]?.theme || 'daily signal report');
+" 2>/dev/null || echo "daily signal report")
 
-echo "📡 每日信号雷达 ${DATE} | 主题: ${THEME} | 详情: ${REPORT_URL}"
+SUMMARY="📡 每日信号雷达 ${DATE} | 主题: ${THEME} | 详情: ${REPORT_URL}"
+echo "$SUMMARY"
+
+# If running in background (nohup), also send directly via hermes
+if [ -n "${HERMES_SEND_TO:-}" ]; then
+  "$HOME/.local/bin/hermes" send --to "$HERMES_SEND_TO" "$SUMMARY" 2>/dev/null || true
+fi
