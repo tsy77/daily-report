@@ -4,7 +4,7 @@
       "id": "reddit-ecommerce",
       "name": "Reddit 电商社区",
       "type": "reddit",
-      "subreddits": ["ecommerce", "shopify", "FulfillmentByAmazon", "Etsy", "ecommercecommunity", "amazonseller", "EtsySellers", "dropship", "shopifydev", "AmazonFBATips"],
+      "subreddits": ["ecommerce", "shopify", "FulfillmentByAmazon", "Etsy", "amazonseller", "EtsySellers", "dropship", "shopifydev", "AmazonFBATips"],
       "keywords": ["AI", "tool", "image", "video", "product photo", "listing", "automation", "SaaS", "generator", "pain", "problem", "frustrated", "hate", "annoying", "broken", "help"],
       "enabled": true
     },
