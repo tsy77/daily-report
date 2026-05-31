@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电商痛点需求雷达 — 2026-05-31</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --text: #1a202c;
+    --text-secondary: #64748b;
+    --accent: #3b82f6;
+    --accent-light: #eff6ff;
+    --green: #10b981;
+    --green-light: #ecfdf5;
+    --orange: #f59e0b;
+    --orange-light: #fffbeb;
+    --red: #ef4444;
+    --red-light: #fef2f2;
+    --purple: #8b5cf6;
+    --purple-light: #f5f3ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 0;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+    color: white;
+    padding: 48px 24px;
+    text-align: center;
+  }
+  .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .header .meta { font-size: 15px; opacity: 0.85; }
+  .header .meta span { margin: 0 12px; }
+
+  /* Container */
+  .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+
+  /* Verdict Banner */
+  .verdict {
+    background: var(--card);
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 36px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .verdict h2 {
+    font-size: 18px;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .verdict h2::before { content: "🎯"; font-size: 20px; }
+  .verdict p { font-size: 15px; margin-bottom: 12px; color: #334155; }
+  .verdict .highlight {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  .verdict .highlight strong { color: var(--accent); }
+
+  /* Section Title */
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 40px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Cluster Card */
+  .cluster {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s;
+  }
+  .cluster:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .cluster-header {
+    padding: 20px 24px 16px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .cluster-header:hover { background: #f8fafc; }
+  .cluster-title {
+    font-size: 17px;
+    font-weight: 600;
+    flex: 1;
+  }
+  .cluster-title .rank {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    margin-right: 10px;
+  }
+  .score-badge {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .score-high { background: var(--green-light); color: var(--green); }
+  .score-mid { background: var(--orange-light); color: var(--orange); }
+  .score-low { background: var(--red-light); color: var(--red); }
+
+  .cluster-body { padding: 0 24px 20px; }
+  .cluster-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .cluster-tags span {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    background: #f1f5f9;
+    color: var(--text-secondary);
+  }
+
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 600px) { .analysis-grid { grid-template-columns: 1fr; } }
+  .analysis-item {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  .analysis-item.why { background: #fefce8; }
+  .analysis-item.product { background: var(--green-light); }
+  .analysis-item.action { background: var(--purple-light); }
+  .analysis-item label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+
+  .signals-list {
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+  .signals-list summary {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  .signals-list ul { list-style: none; padding: 0; }
+  .signals-list li {
+    font-size: 13px;
+    padding: 6px 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .signals-list li:last-child { border-bottom: none; }
+  .signals-list a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .signals-list a:hover { text-decoration: underline; }
+  .signals-list .source {
+    font-size: 11px;
+    color: var(--text-secondary);
+    background: #f1f5f9;
+    padding: 2px 8px;
+    border-radius: 8px;
+    margin-left: 6px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 32px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  /* Collapse */
+  .cluster .cluster-body { display: none; }
+  .cluster.open .cluster-body { display: block; }
+  .cluster-header .arrow {
+    font-size: 12px;
+    color: var(--text-secondary);
+    transition: transform 0.2s;
+  }
+  .cluster.open .cluster-header .arrow { transform: rotate(180deg); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>电商痛点需求雷达</h1>
+  <div class="meta">
+    <span>2026-05-31</span>
+    <span>|</span>
+    <span>信号数: 150</span>
+    <span>|</span>
+    <span>聚类数: 18</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Verdict -->
+  <div class="verdict">
+    <h2>今日主判断</h2>
+    <p>信号密度最高的是<strong>"卖家利润压缩与成本黑箱"</strong>方向：多个独立来源证实 Amazon 卖家从年销 $2.5M 降到 barely profitable，SKU 级 ACOS 看似健康但仓储费、退货、广告竞价上涨让实际利润远低于预期。同时 Shopify 密集迭代退货/换货 API（4个版本连续更新）、结账定制化能力爆发，平台正在系统性推动商家精细化运营。</p>
+    <div class="highlight">
+      <strong>最值得做的方向：</strong>SKU 级利润审计仪表盘 — 自动抓取 FBA 费用、广告花费、退货率、仓储成本，给出真实净利润而非仅看 revenue/ACOS。5条独立信号交叉验证了这个痛点，且卖家的情感烈度极高（"Amazon steal my inventory"、"barely profitable"）。
+    </div>
+    <div class="highlight" style="border-left-color: var(--purple);">
+      <strong>今天可以验证：</strong>在 r/FulfillmentByAmazon 和 r/AmazonFBATips 发帖征集卖家当前利润率数据，用 3-5 个 ASIN 做真实利润拆解 demo，测试卖家是否愿意为 SKU 级利润透明度付费 $29/月。
+    </div>
+  </div>
+
+  <!-- Clusters -->
+  <h2 class="section-title">信号聚类</h2>
+
+  <!-- #1 Score 9 -->
+  <div class="cluster open" id="c1">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">1</span>卖家利润压缩与成本黑箱</div>
+      <span class="score-badge score-high">9 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>reddit</span><span>5 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>Amazon广告成本持续上升、竞争加剧，年销$2.5M的卖家已 barely profitable；SKU级ACOS看似健康但仓储费、退货、广告竞价让实际利润远低于预期；Amazon自营还直接低价截流第三方卖家库存</div>
+        <div class="analysis-item product"><label>可能的产品</label>SKU级利润审计仪表盘 — 自动抓取FBA费用、广告花费、退货率、仓储成本，给出真实净利润而非仅看revenue/ACOS</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>在r/FulfillmentByAmazon发帖征集卖家当前利润率数据，用3-5个ASIN做真实利润拆解demo，测试$29/月定价</div>
+      <details class="signals-list" open>
+        <summary>相关信号 (5)</summary>
+        <ul>
+          <li>We used to do $2.5M on Amazon. Now we're barely profitable <span class="source">reddit/r/AmazonFBATips</span></li>
+          <li>Revived my old Etsy shop, improved everything, still can't get sales <span class="source">reddit/r/EtsySellers</span></li>
+          <li>How Much Should I Sell my Private Label Brand for? <span class="source">reddit/r/FulfillmentByAmazon</span></li>
+          <li>Amazon sellers with 50+ SKUs: how often do you audit true SKU profitability? <span class="source">reddit/r/FulfillmentByAmazon</span></li>
+          <li>Did Seller Central steal my inventory? <span class="source">reddit/r/amazonseller</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #2 Score 9 -->
+  <div class="cluster" id="c2">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">2</span>物流履约与库存精细化运营</div>
+      <span class="score-badge score-high">9 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>reddit</span><span>shopify.dev</span><span>12 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>FBM转FBA出现卡车提货延迟，Shopify强制按市场区域限制库存可用量，平台逐步要求幂等操作，多仓多渠道履约的复杂度正在急剧上升</div>
+        <div class="analysis-item product"><label>可能的产品</label>多渠道履约编排工具：自动分配最优仓库、处理FBM/FBA切换、管理跨区域库存限额</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>检查Shopify fulfillmentOrderMove新错误码的具体枚举值，确认哪些场景是卖家最常遇到的</div>
+      <details class="signals-list">
+        <summary>相关信号 (12)</summary>
+        <ul>
+          <li>Switching from FBM to FBA <span class="source">reddit/r/FulfillmentByAmazon</span></li>
+          <li>Improved user errors on the fulfillmentOrderMove mutation <span class="source">shopify.dev</span></li>
+          <li>Making idempotency mandatory for inventory adjustments and refund mutations <span class="source">shopify.dev</span></li>
+          <li>Adding idempotency for inventory adjustments and refund mutations <span class="source">shopify.dev</span></li>
+          <li>Removal of support for the "Sell from all locations" fulfillable inventory setting <span class="source">shopify.dev</span></li>
+          <li>Cart quantity limits are now determined by market region <span class="source">shopify.dev</span></li>
+          <li>Storefront API now supports per-market Fulfillable Inventory <span class="source">shopify.dev</span></li>
+          <li>Subscription Billing Attempt now Respects Inventory Policy to not Allow Overselling <span class="source">shopify.dev</span></li>
+          <li>Apply multiple holds to a single fulfillment order <span class="source">shopify.dev</span></li>
+          <li>Fulfillment service SKU sharing <span class="source">shopify.dev</span></li>
+          <li>Introducing the Local Pickup API <span class="source">shopify.dev</span></li>
+          <li>Release Fulfillment Hold Automation API Changes <span class="source">shopify.dev</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #3 Score 9 -->
+  <div class="cluster" id="c3">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">3</span>退货与换货流程复杂</div>
+      <span class="score-badge score-high">9 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>shopify.dev</span><span>4 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>Shopify连续多个版本迭代Returns API（换货、费用、退款阻断、销售更新），说明商家对退货体验的投诉量激增，平台在集中补课</div>
+        <div class="analysis-item product"><label>可能的产品</label>退货/换货自动化SaaS：集成退货标签生成、智能换货推荐、退货原因分析、退款策略引擎</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>搜索Shopify App Store中退货类应用的评分和评论，验证是否存在"功能多但体验差"的空白</div>
+      <details class="signals-list">
+        <summary>相关信号 (4)</summary>
+        <ul>
+          <li>Returns now supported in Customer Accounts API <span class="source">shopify.dev</span></li>
+          <li>New return APIs to create exchanges, add fees, remove return lines and calculate returns <span class="source">shopify.dev</span></li>
+          <li>Return mutation will update sales (previously unchanged until time of Refund) <span class="source">shopify.dev</span></li>
+          <li>Bugfix to Returns API: Block refunds on requested returns <span class="source">shopify.dev</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #4 Score 9 -->
+  <div class="cluster" id="c4">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">4</span>结账定制化与 checkout extensibility 需求爆发</div>
+      <span class="score-badge score-high">9 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>shopify.dev</span><span>4 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>Shopify大力推进Checkout UI Extensions、废弃旧Scripts、推出新组件，品牌卖家对结账页个性化的需求已从锦上添花变为标配</div>
+        <div class="analysis-item product"><label>可能的产品</label>结账页转化率优化套件 — 提供A/B测试模板库（追加销售、信任徽章、倒计时），内建转化率追踪看板</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>统计Shopify Checkout UI Extensions相关GitHub开源项目和社区教程数量，判断开发者生态热度</div>
+      <details class="signals-list">
+        <summary>相关信号 (4)</summary>
+        <ul>
+          <li>New APIs and components for Checkout UI extensions <span class="source">shopify.dev</span></li>
+          <li>Support for Shopify Scripts will end on August 13, 2024 <span class="source">shopify.dev</span></li>
+          <li>Post-purchase fulfillment holds <span class="source">shopify.dev</span></li>
+          <li>Shopify Scripts now available on Storefront API Cart <span class="source">shopify.dev</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #5 Score 8 -->
+  <div class="cluster" id="c5">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">5</span>平台 API 治理与开发者准入壁垒</div>
+      <span class="score-badge score-mid">8 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>reddit</span><span>shopify.dev</span><span>7 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>Etsy连续6次拒绝API申请，Shopify对未签名的bot施加最严格速率限制并推出Web Bot Auth，平台正在系统性收紧API准入，第三方工具开发者面临生存危机</div>
+        <div class="analysis-item product"><label>可能的产品</label>多平台API合规网关：自动签名请求、管理Web Bot Auth、统一跨平台API准入流程</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>检查Shopify Web Bot Auth的具体实现文档，评估对现有Shopify工具生态的破坏性影响</div>
+      <details class="signals-list">
+        <summary>相关信号 (7)</summary>
+        <ul>
+          <li>Help with Amazon Seller Central API Integration - Store Needed <span class="source">reddit/r/FulfillmentByAmazon</span></li>
+          <li>Need help with Amazon GTIN exemption for wall art <span class="source">reddit/r/amazonseller</span></li>
+          <li>Is social media scheduler app (for Pinterest) not allowed to be published on the app store <span class="source">reddit/r/shopifydev</span></li>
+          <li>Etsy API Application Rejected 6 Times – Looking for Insights <span class="source">reddit/r/EtsySellers</span></li>
+          <li>Bots and agents should identify themselves via Web Bot Auth <span class="source">shopify.dev</span></li>
+          <li>More automated checks for app review pre-submission page <span class="source">shopify.dev</span></li>
+          <li>Update to Shopify's app developer revenue share <span class="source">shopify.dev</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #6 Score 8 -->
+  <div class="cluster" id="c6">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">6</span>AI 驱动广告创意工具需求爆发</div>
+      <span class="score-badge score-mid">8 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>reddit</span><span>2 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>卖家同时在探索AI优化PPC出价和AI生成广告素材，2026年AI广告工具市场正在成熟但卖家尚未找到可靠的ROI验证路径</div>
+        <div class="analysis-item product"><label>可能的产品</label>AI广告素材生成 + A/B测试一体化工具（支持Amazon/Etsy/Shopify多平台）</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>联系帖主了解其当前AI PPC工作流具体卡点，评估产品切入角度</div>
+      <details class="signals-list">
+        <summary>相关信号 (2)</summary>
+        <ul>
+          <li>How is everyone using AI for their Amazon PPC campaigns? <span class="source">reddit/r/AmazonFBATips</span></li>
+          <li>What are the best AI Ad Generators/SaaS tools in 2026? Are they actually worth the price? <span class="source">reddit/r/SaaS</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #7 Score 8 -->
+  <div class="cluster" id="c7">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">7</span>电商运营根因诊断缺口</div>
+      <span class="score-badge score-mid">8 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>reddit</span><span>2 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>数据量暴涨但可执行洞察稀缺，卖家销量下降时只能凭经验猜测原因（广告？库存？竞争？），缺乏自动化归因工具</div>
+        <div class="analysis-item product"><label>可能的产品</label>销量异常自动归因诊断工具（关联广告、库存、竞品、季节性因子）</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>在r/FulfillmentByAmazon回复root cause帖子，深度访谈其遇到的诊断场景</div>
+      <details class="signals-list">
+        <summary>相关信号 (2)</summary>
+        <ul>
+          <li>Why Is Finding Root Cause Still So Difficult in Ecommerce? <span class="source">reddit/r/FulfillmentByAmazon</span></li>
+          <li>Would data engineers actually use an AI-powered operational dashboard for Spark/Databricks reliability? <span class="source">reddit/r/SaaS</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #8 Score 8 -->
+  <div class="cluster" id="c8">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">8</span>跨境电商选品、本地化与支付</div>
+      <span class="score-badge score-mid">8 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>reddit</span><span>shopify.dev</span><span>13 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>多个卖家同时在寻找垂直品类（K-Beauty、儿童教育玩具）的跨境供应链；Shopify密集发布多市场定价、本地化内容、配送地址管理功能，跨境卖家的本地化运营门槛正在被平台重点回应</div>
+        <div class="analysis-item product"><label>可能的产品</label>跨境动态定价+供应商匹配平台：基于汇率、竞品价自动建议各国最优售价，集成产品数据API与合规HS编码归类</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>在r/dropship搜索近30天「supplier sourcing」帖子的品类分布，验证K-Beauty和儿童品类的需求密度</div>
+      <details class="signals-list">
+        <summary>相关信号 (13)</summary>
+        <ul>
+          <li>Looking for kids' product suppliers <span class="source">reddit/r/dropship</span></li>
+          <li>Looking for K-Beauty Dropship Suppliers + Product Data APIs <span class="source">reddit/r/dropship</span></li>
+          <li>Global HS code is now supported in GraphQL Admin API <span class="source">shopify.dev</span></li>
+          <li>Storefront API support for Combined Listings <span class="source">shopify.dev</span></li>
+          <li>Translatable content that is specific to a market context is now exposed <span class="source">shopify.dev</span></li>
+          <li>Cart Delivery Address Management <span class="source">shopify.dev</span></li>
+          <li>New Field: Order Shipping Address Validation Result <span class="source">shopify.dev</span></li>
+          <li>Manage international pricing with the price list admin API <span class="source">shopify.dev</span></li>
+          <li>GraphQL Admin API now supports creating app charges using the merchant's billing currency <span class="source">shopify.dev</span></li>
+          <li>Contextual pricing for products is now available in the GraphQL Admin API <span class="source">shopify.dev</span></li>
+          <li>International pricing support now added to the Product API <span class="source">shopify.dev</span></li>
+          <li>Store owners accepting Crypto/Stablecoins: How are you handling the friction of paying for shipping? <span class="source">reddit/r/ecommerce</span></li>
+          <li>Anyone else completely give up on selling in Canada? <span class="source">reddit/r/amazonseller</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #9 Score 8 -->
+  <div class="cluster" id="c9">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">9</span>折扣与促销灵活度不足</div>
+      <span class="score-badge score-mid">8 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>shopify.dev</span><span>6 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>Shopify连续推出折扣组合、自动免运费、折扣类目暴露、B2B自动折扣等API，商家在多渠道、多场景下的促销需求远超平台原生能力</div>
+        <div class="analysis-item product"><label>可能的产品</label>智能促销引擎SaaS — 可视化配置多层级折扣规则（买赠、阶梯折扣、叠加策略），自动计算最优组合并追踪ROI</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>搜索Shopify App Store折扣类应用数量与评分，调研top 5的差评关键词</div>
+      <details class="signals-list">
+        <summary>相关信号 (6)</summary>
+        <ul>
+          <li>Introducing the new `context` field to specify discount eligibility <span class="source">shopify.dev</span></li>
+          <li>Discount Functions support on Shopify Point of Sale <span class="source">shopify.dev</span></li>
+          <li>Automatic Discount Functions now apply to B2B sessions <span class="source">shopify.dev</span></li>
+          <li>Apply multiple discounts to an order with discount combinations <span class="source">shopify.dev</span></li>
+          <li>Discounts - Ability to create Automatic free shipping discount <span class="source">shopify.dev</span></li>
+          <li>Expose the discount class for applied_discounts on a line item for the Checkout Admin REST API <span class="source">shopify.dev</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #10 Score 8 -->
+  <div class="cluster" id="c10">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">10</span>隐私合规数据管理压力增大</div>
+      <span class="score-badge score-mid">8 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>shopify.dev</span><span>3 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>2024-2025年美国多州隐私法生效，Shopify接连推出Data Sale Opt Out API、Customer Data Erasure API、订阅数据红action支持，平台在帮商家应对法律风险</div>
+        <div class="analysis-item product"><label>可能的产品</label>电商隐私合规自动化工具：一键生成隐私政策、自动处理数据删除请求、CCPA/GDPR合规审计报告</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>调研Shopify商家在隐私合规方面的常见罚款案例或社区求助帖，量化痛点</div>
+      <details class="signals-list">
+        <summary>相关信号 (3)</summary>
+        <ul>
+          <li>Introducing the new Data Sale Opt Out API <span class="source">shopify.dev</span></li>
+          <li>Introducing the new Customer Data Erasure API <span class="source">shopify.dev</span></li>
+          <li>Customer Redaction support on Subscriptions APIs <span class="source">shopify.dev</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #11 Score 8 -->
+  <div class="cluster" id="c11">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">11</span>卖家工具选择困难症：付费工具太多但不确定 ROI</div>
+      <span class="score-badge score-mid">8 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>reddit</span><span>3 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>Amazon第三方工具市场已高度碎片化（广告、库存、选品各一个），卖家月费叠加数百美元却不确定哪个真正有用</div>
+        <div class="analysis-item product"><label>可能的产品</label>卖家工具ROI对比平台 — 类似G2/TrustPilot但专注Amazon工具，按卖家规模和品类推荐最小工具组合</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>抓取r/amazonseller中所有工具推荐帖，整理卖家最常提到的5款工具及其使用场景</div>
+      <details class="signals-list">
+        <summary>相关信号 (3)</summary>
+        <ul>
+          <li>Is seller software necessary? <span class="source">reddit/r/amazonseller</span></li>
+          <li>How do you use third party tools to optimize your campaigns? <span class="source">reddit/r/amazonseller</span></li>
+          <li>How do you do inventory planning? Do you use software? <span class="source">reddit/r/amazonseller</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #12 Score 8 -->
+  <div class="cluster" id="c12">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">12</span>Etsy 平台信任崩塌：AI 滥造商品 + 平台通信故障</div>
+      <span class="score-badge score-mid">8 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>reddit</span><span>4 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>AI生成商品大规模涌入Etsy，买家搜索手工商品只能找到AI打印品；同时平台将买家消息误判为垃圾邮件导致订单纠纷，卖家对平台信任加速流失</div>
+        <div class="analysis-item product"><label>可能的产品</label>Etsy卖家独立站迁移套件 — 一键导出Etsy商品/评价到Shopify，保留SEO权重</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>在r/EtsySellers发起投票：有多少卖家正在考虑离开Etsy？统计回复率验证迁移意愿</div>
+      <details class="signals-list">
+        <summary>相关信号 (4)</summary>
+        <ul>
+          <li>Looking for custom Aloha/Hawaiian Shirt designer, USA based <span class="source">reddit/r/Etsy</span></li>
+          <li>Why did Etsy place a buyers help request into spam? <span class="source">reddit/r/EtsySellers</span></li>
+          <li>Help with a customer who claims order arrived broken <span class="source">reddit/r/EtsySellers</span></li>
+          <li>Should I invest in ads if my listings have a great SEO position? <span class="source">reddit/r/EtsySellers</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #13 Score 7 -->
+  <div class="cluster" id="c13">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">13</span>平台合规与账号风控</div>
+      <span class="score-badge score-mid">7 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>reddit</span><span>shopify.dev</span><span>3 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>Amazon关联账号封禁延伸到家庭成员，电子配件类目QC投诉率高达1/8，平台持续收紧合规要求</div>
+        <div class="analysis-item product"><label>可能的产品</label>跨境电商合规预检SaaS：上架前自动扫描受限品政策、关联账号风险隔离检测</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>爬取r/AmazonFBATips近30天关于account deactivation的帖子数量与评论热度</div>
+      <details class="signals-list">
+        <summary>相关信号 (3)</summary>
+        <ul>
+          <li>My brother's account is deactivated due to my account being deactivated <span class="source">reddit/r/AmazonFBATips</span></li>
+          <li>[Guide] Electronic Accessories QC Checklist for FBA Sellers <span class="source">reddit/r/AmazonFBATips</span></li>
+          <li>Legacy customer accounts are now deprecated <span class="source">shopify.dev</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #14 Score 7 -->
+  <div class="cluster" id="c14">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">14</span>Amazon 新卖家入门门槛过高</div>
+      <span class="score-badge score-mid">7 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>reddit</span><span>4 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>Amazon FBA持续吸引新卖家涌入，但平台引导极差——从打印条码到创建发货计划，每个环节都有人卡住</div>
+        <div class="analysis-item product"><label>可能的产品</label>Amazon FBA新手引导SaaS — 从注册到第一次发货的step-by-step交互式向导</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>统计r/amazonseller近30天新手求助帖占比，评估市场规模</div>
+      <details class="signals-list">
+        <summary>相关信号 (4)</summary>
+        <ul>
+          <li>Please educate me like I'm 5 years old about selling <span class="source">reddit/r/amazonseller</span></li>
+          <li>First Shipping... (Need help) <span class="source">reddit/r/amazonseller</span></li>
+          <li>How to print ASIN bar code <span class="source">reddit/r/amazonseller</span></li>
+          <li>The biggest mistake I see with Amazon launches is expecting too much too soon <span class="source">reddit/r/FulfillmentByAmazon</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #15 Score 7 -->
+  <div class="cluster" id="c15">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">15</span>产品图片/视觉优化与 3D 交互配置</div>
+      <span class="score-badge score-mid">7 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>reddit</span><span>4 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>AI生成图片正在拉大listing质量差距——Etsy卖家发现AI模特图比实拍图获得更多曝光；同时定制家具等高客单品类仍依赖邮件+表格沟通，3D产品配置需求浮现</div>
+        <div class="analysis-item product"><label>可能的产品</label>嵌入式3D产品配置器Shopify插件 + AI产品图优化工具（自动生成合规的模特图/场景图/白底图）</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>联系定制家具卖家帖主，深度访谈当前流程痛点，验证是否愿意为3D配置器付费$49-99/月</div>
+      <details class="signals-list">
+        <summary>相关信号 (4)</summary>
+        <ul>
+          <li>Help me select pictures <span class="source">reddit/r/EtsySellers</span></li>
+          <li>Help with photos of my jewelry <span class="source">reddit/r/EtsySellers</span></li>
+          <li>Looking for a 3d custom product configurator for made to order furniture <span class="source">reddit/r/ecommerce</span></li>
+          <li>Let's talk about how the algos stole the storefront <span class="source">reddit/r/ecommerce</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #16 Score 7 -->
+  <div class="cluster" id="c16">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">16</span>订阅计费与 recurring payment 体验粗糙</div>
+      <span class="score-badge score-mid">7 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>shopify.dev</span><span>3 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>Shopify修改订阅计费尝试创建行为、为使用量设置消费上限，订阅模式商家遇到扣款失败、客户流失、费用不可控等问题的频率在上升</div>
+        <div class="analysis-item product"><label>可能的产品</label>订阅挽回与智能重试工具 — 预测扣款失败概率，智能调度重试窗口，附带客户自助修改支付方式的邮件/短信自动化</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>查询Shopify订阅类app（Recharge、Bold）的低分评价，聚焦扣款失败相关抱怨</div>
+      <details class="signals-list">
+        <summary>相关信号 (3)</summary>
+        <ul>
+          <li>Changes to Subscription Billing Attempt creation behavior <span class="source">shopify.dev</span></li>
+          <li>New WebHooks and App Events for App Usage Spending Limits and Changes to `balanced_used` <span class="source">shopify.dev</span></li>
+          <li>Subscription APIs now support Shopify Scripts <span class="source">shopify.dev</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #17 Score 6 -->
+  <div class="cluster" id="c17">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">17</span>商品数据管理与税务合规压力</div>
+      <span class="score-badge score-low">6 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>shopify.dev</span><span>8 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>REST API废弃强制迁移GraphQL、产品分类学API、媒体类型过滤等更新密集推出，Shopify废弃自定义product type转向标准product category用于税务，商家在商品管理上面临工具链断裂和迁移成本</div>
+        <div class="analysis-item product"><label>可能的产品</label>Shopify商品管理迁移助手 + 商品税务合规自动化工具</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>在Shopify开发者社区搜索REST deprecation相关讨论，量化迁移痛点</div>
+      <details class="signals-list">
+        <summary>相关信号 (8)</summary>
+        <ul>
+          <li>Product image resource in REST now returns a media image GID to streamline migration to GraphQL <span class="source">shopify.dev</span></li>
+          <li>Admin REST API product image is now deprecated <span class="source">shopify.dev</span></li>
+          <li>Storefront Product Taxonomy Category API <span class="source">shopify.dev</span></li>
+          <li>Filter product media by media_type <span class="source">shopify.dev</span></li>
+          <li>Product duplication now duplicates variant metafields <span class="source">shopify.dev</span></li>
+          <li>Deprecating custom and standardized product type in favor of product category <span class="source">shopify.dev</span></li>
+          <li>New tax exemption values <span class="source">shopify.dev</span></li>
+          <li>Introducing standardized and custom product types to GraphQL Admin API <span class="source">shopify.dev</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <!-- #18 Score 6 -->
+  <div class="cluster" id="c18">
+    <div class="cluster-header" onclick="toggle(this)">
+      <div class="cluster-title"><span class="rank">18</span>客户运营与转化工具升级</div>
+      <span class="score-badge score-low">6 分</span>
+      <span class="arrow">▼</span>
+    </div>
+    <div class="cluster-body">
+      <div class="cluster-tags"><span>shopify.dev</span><span>6 条信号</span></div>
+      <div class="analysis-grid">
+        <div class="analysis-item why"><label>为什么是现在</label>Shopify密集发布退款转储值卡、Web Pixels扩展到客户账户页、订阅合同actor追踪等功能，平台在推动开发者构建更精细的客户留存和转化工具</div>
+        <div class="analysis-item product"><label>可能的产品</label>客户全生命周期运营套件：订单状态页追踪、退款转储值卡自动化、订阅管理增强、本地化价格展示</div>
+      </div>
+      <div class="analysis-item action" style="margin-bottom:16px;"><label>今天验证</label>调研Shopify Web Pixels在订单状态页的能力边界，确认是否支持自定义upsell组件</div>
+      <details class="signals-list">
+        <summary>相关信号 (6)</summary>
+        <ul>
+          <li>Web Pixels now run on Customer Accounts and Order Status Page <span class="source">shopify.dev</span></li>
+          <li>Refund to Store Credit <span class="source">shopify.dev</span></li>
+          <li>Add actor field to subscription contract and billing attempt mutations <span class="source">shopify.dev</span></li>
+          <li>New Liquid filter for displaying unit prices <span class="source">shopify.dev</span></li>
+          <li>`@inContext` directive added to the Customer Account API <span class="source">shopify.dev</span></li>
+          <li>Added MOST_RELEVANT value for `CollectionSortOrder` <span class="source">shopify.dev</span></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <div class="footer">
+    电商痛点需求雷达 &middot; 由 AI 自动生成 &middot; 2026-05-31
+  </div>
+</div>
+
+<script>
+function toggle(el) {
+  el.closest('.cluster').classList.toggle('open');
+}
+</script>
+</body>
+</html>
