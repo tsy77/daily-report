@@ -1,5 +1,5 @@
-import fetch from 'node-fetch';
 import { XMLParser } from 'fast-xml-parser';
+import { fetchWithTimeout, fetchErrorMessage } from './fetch-utils.mjs';
 
 const parser = new XMLParser({
   ignoreAttributes: false,
@@ -52,10 +52,9 @@ export async function fetchRSS(sourceConfig) {
   const signals = [];
 
   try {
-    const res = await fetch(url, {
+    const res = await fetchWithTimeout(url, {
       headers: { 'User-Agent': 'DailyReportBot/1.0' },
-      timeout: 15000,
-    });
+    }, 15000);
     if (!res.ok) {
       console.warn(`[RSS] Failed to fetch ${url}: ${res.status}`);
       return signals;
@@ -74,7 +73,7 @@ export async function fetchRSS(sourceConfig) {
 
     console.log(`[RSS] ${url}: ${signals.length}/${items.length} items matched`);
   } catch (err) {
-    console.warn(`[RSS] Error fetching ${url}: ${err.message}`);
+    console.warn(`[RSS] Error fetching ${url}: ${fetchErrorMessage(err)}`);
   }
 
   return signals;

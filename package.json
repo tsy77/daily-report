@@ -6,7 +6,10 @@
   "scripts": {
     "signal": "node signal.mjs",
     "signal:dry": "node signal.mjs --dry-run",
-    "signal:export": "node signal.mjs --export"
+    "signal:export": "node signal.mjs --export",
+    "daily": "scripts/run-daily.sh",
+    "hermes:install": "scripts/install-hermes-cron.sh",
+    "hermes:status": "hermes cron list"
   },
   "dependencies": {
     "dotenv": "^16.4.5",

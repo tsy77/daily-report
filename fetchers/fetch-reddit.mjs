@@ -1,5 +1,5 @@
-import fetch from 'node-fetch';
 import { XMLParser } from 'fast-xml-parser';
+import { fetchWithTimeout, fetchErrorMessage } from './fetch-utils.mjs';
 
 const parser = new XMLParser({
   ignoreAttributes: false,
@@ -21,10 +21,9 @@ export async function fetchReddit(sourceConfig) {
   for (const sub of subreddits) {
     try {
       const url = `https://www.reddit.com/r/${sub}/new.rss`;
-      const res = await fetch(url, {
+      const res = await fetchWithTimeout(url, {
         headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36' },
-        timeout: 15000,
-      });
+      }, 15000);
       if (!res.ok) {
         console.warn(`[Reddit] Failed to fetch r/${sub}: ${res.status}`);
         continue;
@@ -58,7 +57,7 @@ export async function fetchReddit(sourceConfig) {
 
       console.log(`[Reddit] r/${sub}: ${matched}/${raw.length} posts matched`);
     } catch (err) {
-      console.warn(`[Reddit] Error fetching r/${sub}: ${err.message}`);
+      console.warn(`[Reddit] Error fetching r/${sub}: ${fetchErrorMessage(err)}`);
     }
   }
 

@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import { fetchWithTimeout, fetchErrorMessage } from './fetch-utils.mjs';
 
 export async function fetchTwitter(sourceConfig) {
   const { queries, accounts } = sourceConfig;
@@ -29,13 +29,12 @@ async function fetchTwitterOfficial(queries, accounts, bearerToken, signals) {
   for (const query of queries) {
     try {
       const url = `https://api.twitter.com/2/tweets/search/recent?query=${encodeURIComponent(query)}&max_results=20&tweet.fields=created_at,text,public_metrics,author_id`;
-      const res = await fetch(url, {
+      const res = await fetchWithTimeout(url, {
         headers: {
           'Authorization': `Bearer ${bearerToken}`,
           'User-Agent': 'DailyReportBot/1.0',
         },
-        timeout: 15000,
-      });
+      }, 15000);
 
       if (!res.ok) {
         console.warn(`[Twitter] API error: ${res.status}`);
@@ -62,7 +61,7 @@ async function fetchTwitterOfficial(queries, accounts, bearerToken, signals) {
 
       console.log(`[Twitter] "${query}": ${tweets.length} tweets`);
     } catch (err) {
-      console.warn(`[Twitter] Error: ${err.message}`);
+      console.warn(`[Twitter] Error: ${fetchErrorMessage(err)}`);
     }
   }
 
@@ -83,7 +82,7 @@ async function fetchTwitterRapidAPI(queries, apiKey, apiHost, signals) {
     }
 
     try {
-      const tweetsRes = await fetch(
+      const tweetsRes = await fetchWithTimeout(
         `https://${apiHost}/user-tweets?user=${userId}&count=20`,
         {
           headers: {
@@ -91,8 +90,8 @@ async function fetchTwitterRapidAPI(queries, apiKey, apiHost, signals) {
             'x-rapidapi-host': apiHost,
             'Content-Type': 'application/json',
           },
-          timeout: 15000,
-        }
+        },
+        15000
       );
 
       if (!tweetsRes.ok) {
@@ -126,7 +125,7 @@ async function fetchTwitterRapidAPI(queries, apiKey, apiHost, signals) {
 
       console.log(`[Twitter/RapidAPI] @${screenName}: ${entries.length} tweets`);
     } catch (err) {
-      console.warn(`[Twitter/RapidAPI] Error for @${screenName}: ${err.message}`);
+      console.warn(`[Twitter/RapidAPI] Error for @${screenName}: ${fetchErrorMessage(err)}`);
     }
   }
 

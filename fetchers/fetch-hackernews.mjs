@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import { fetchWithTimeout, fetchErrorMessage } from './fetch-utils.mjs';
 
 export async function fetchHackerNews(sourceConfig) {
   const { queries } = sourceConfig;
@@ -8,10 +8,9 @@ export async function fetchHackerNews(sourceConfig) {
   for (const query of queries) {
     try {
       const url = `https://hn.algolia.com/api/v1/search?query=${encodeURIComponent(query)}&tags=story&hitsPerPage=20`;
-      const res = await fetch(url, {
+      const res = await fetchWithTimeout(url, {
         headers: { 'User-Agent': 'DailyReportBot/1.0' },
-        timeout: 15000,
-      });
+      }, 15000);
       if (!res.ok) {
         console.warn(`[HN] Failed: ${res.status}`);
         continue;
@@ -37,7 +36,7 @@ export async function fetchHackerNews(sourceConfig) {
 
       console.log(`[HN] "${query}": ${hits.length} hits`);
     } catch (err) {
-      console.warn(`[HN] Error: ${err.message}`);
+      console.warn(`[HN] Error: ${fetchErrorMessage(err)}`);
     }
   }
 
