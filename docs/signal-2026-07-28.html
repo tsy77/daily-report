@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>每日信号雷达 2026-07-28</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1020;--panel:#121a2f;--muted:#95a3b8;--text:#edf2ff;--accent:#62d6ff;--line:#24314f;--hot:#ffb86b}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at top,#17213d,var(--bg));color:var(--text);line-height:1.6}.wrap{max-width:980px;margin:0 auto;padding:32px 18px 80px}header{padding:28px 0 18px}.eyebrow{color:var(--accent);font-weight:700;letter-spacing:.08em}h1{font-size:clamp(30px,6vw,56px);line-height:1.05;margin:8px 0 12px}.meta{color:var(--muted)}.hero,.card,.signals{background:rgba(18,26,47,.82);border:1px solid var(--line);border-radius:22px;padding:22px;margin:18px 0;box-shadow:0 20px 60px rgba(0,0,0,.25)}.hero strong{color:var(--hot)}.card-head{display:flex;gap:12px;align-items:center}.card h2{flex:1;margin:0;font-size:22px}.rank,.score{border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--accent);white-space:nowrap}.score{color:var(--hot)}p{margin:10px 0}details{margin-top:12px;color:var(--muted)}summary{cursor:pointer;color:var(--accent)}a{color:var(--accent);text-decoration:none}.signals li{margin:10px 0}.signals span{display:block;color:var(--muted);font-size:13px}@media(max-width:640px){.card-head{align-items:flex-start}.card h2{font-size:18px}.wrap{padding:20px 12px 60px}}
+</style>
+</head>
+<body><main class="wrap">
+<header>
+  <div class="eyebrow">ECOMMERCE PAINPOINT RADAR</div>
+  <h1>每日信号雷达</h1>
+  <div class="meta">2026-07-28 · 聚类 11 个 · 信号 20 条预览</div>
+</header>
+<section class="hero">
+  <p>今日主判断：<strong>AI-powered marketing attribution in the LLM-search era</strong></p>
+  <p>本报告基于 Reddit / Hacker News / Product Hunt / Shopify changelog / X 等公开信号自动聚类生成，用于发现电商商家的高频痛点和可验证产品机会。</p>
+</section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#1</span>
+      <h2>AI-powered marketing attribution in the LLM-search era</h2>
+      <span class="score">9/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Buyers are shifting product discovery from Google/social to AI assistants (ChatGPT, Perplexity), breaking traditional attribution. Shopify just added conversion-tracking fields to MarketingEngagementCreate (Dec 2025), signaling platform-level investment in closing this gap. A SaaS founder publicly flagged that social traffic was easy to understand but SEO+AI is not.</p>
+    <p><strong>可能产品：</strong>Attribution tool that tracks AI-search referrals and LLM-driven product mentions, mapping them to Shopify orders — essentially &#39;PostHog for AI search visibility&#39;.</p>
+    <p><strong>今日验证动作：</strong>Post a landing page targeting 20 DTC brands ($1M+ GMV) describing an &#39;AI search referral tracker&#39; Shopify app; book 5 discovery calls to validate willingness to pay.</p>
+    <details>
+      <summary>相关信号 2 条</summary>
+      <ul><li>Social traffic was easy to understand. SEO and AI wasn&#39;t</li><li>Conversion tracking fields added to MarketingEngagementCreate</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#2</span>
+      <h2>库存并发安全与超卖防护</h2>
+      <span class="score">9/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>2026-04 API 强制 compare-and-swap 语法，changeFromQuantity 字段变为必填，bulk mutation 严格校验库存上限——Shopify 用平台级强制手段根除多渠道并发场景下的超卖痛点</p>
+    <p><strong>可能产品：</strong>面向多渠道商家的库存同步与超卖预警 SaaS，对接 Shopify/Amazon/TikTok Shop 实时库存锁，自动触发 compare-and-swap 重试</p>
+    <p><strong>今日验证动作：</strong>在 Shopify 社区论坛和 Reddit r/shopify 搜 &#39;oversell&#39;、&#39;inventory drift&#39; 关键词，验证 2026-04 强制升级后是否还有用户报告库存对不上</p>
+    <details>
+      <summary>相关信号 5 条</summary>
+      <ul><li>New compare and swap syntax for the `inventorySetQuantities` mutation</li><li>Making `changeFromQuantity` field required (with explicit opt-out)</li><li>InventoryItem.variant field deprecated in favor of InventoryItem.variants connection</li><li>`productVariantsBulkCreate` and `productVariantsBulkUpdate` mutations now validate `inventoryQuantities` limits</li><li>`productSet` mutation now validates `inventoryQuantities` limits</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#3</span>
+      <h2>AI content generation for marketplace sellers (photos, infographics, viral videos)</h2>
+      <span class="score">8/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Two HN launches in the past year (ReCardEx, ViralCraftAI) plus tightening Amazon/TikTok Shop creative standards mean sellers need fresh creative weekly but can&#39;t afford $500/photo studio shoots.</p>
+    <p><strong>可能产品：</strong>All-in-one creative tool: takes one product photo, generates Amazon main image, infographic, lifestyle shots, plus short-form TikTok/Reels video — bundled per SKU.</p>
+    <p><strong>今日验证动作：</strong>DM 30 Amazon sellers on r/FulfillmentByAmazon and r/AmazonSeller asking what they currently pay for product photography and infographics; map pricing and turnaround pain.</p>
+    <details>
+      <summary>相关信号 2 条</summary>
+      <ul><li>ReCardEx – AI product photos, infographics and videos for e-commerce sellers</li><li>Show HN: A tool that helps users create viral videos to promote products</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#4</span>
+      <h2>退货数据精细化与退货率优化</h2>
+      <span class="score">8/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>新 ReturnReasonDefinition 类型取代旧 enum，Return 对象新增 transactions 连接——平台为商家提供了细颗粒度的退货归因数据，意味着商家开始用数据驱动降低退货率</p>
+    <p><strong>可能产品：</strong>退货归因分析仪表板 + AI 退货预防助手：按 SKU/类目/退货原因聚类，自动生成商品详情页改进建议、尺码指南优化点</p>
+    <p><strong>今日验证动作：</strong>联系 3 家服装/鞋类 Shopify Plus 商家，问他们目前退货原因分析是用什么工具做的，是否愿意付费使用更精细的退货归因看板</p>
+    <details>
+      <summary>相关信号 2 条</summary>
+      <ul><li>Access transactions on the Return object</li><li>New Return Reason Definitions API for Better Return Insights</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#5</span>
+      <h2>跨店铺商品网络（remote products）</h2>
+      <span class="score">8/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>2025-10 起部分美国商家可显示来自其他店铺的商品（remote products）——Shopify 正搭建多店/品牌矩阵/分销网络，App 生态必须改造</p>
+    <p><strong>可能产品：</strong>跨店铺商品同步与分销管理工具：母品牌 × 子品牌矩阵、批发分销、海外独立站矩阵的统一商品/库存/订单中枢</p>
+    <p><strong>今日验证动作：</strong>查 Shopify 官方 remote products 文档与相关 Plus 商家案例，确认这是否是即将放量的 Commerce Network 功能，给 5 家多品牌矩阵商家发调研邮件</p>
+    <details>
+      <summary>相关信号 1 条</summary>
+      <ul><li>Your app may be affected by remote products</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#6</span>
+      <h2>Migration tooling for concurrent Shopify legacy API deprecations</h2>
+      <span class="score">7/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Three overlapping deprecations hit in a narrow window — REST Product Image API (deprecated 2025-01), POS Legacy Extensions (Feb 2025), and Shopify Scripts (June 30, 2026). Thousands of apps and merchant codebases need migration within 12 months.</p>
+    <p><strong>可能产品：</strong>Automated codebase scanner that flags deprecated Shopify APIs in a repo and generates migration PRs, with a special focus on Shopify Scripts → Functions rewrite (the hardest one).</p>
+    <p><strong>今日验证动作：</strong>Search GitHub for repos still importing @shopify/scripts or product-image REST calls; reach out to owners with a free migration audit and quote paid follow-up.</p>
+    <details>
+      <summary>相关信号 4 条</summary>
+      <ul><li>Admin REST API product image is now deprecated</li><li>Product image resource in REST now returns a media image GID to streamline migration to GraphQL</li><li>POS Legacy Extensions Will Be Deprecated in February 2025</li><li>Shopify Scripts will be deprecated on June 30, 2026</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#7</span>
+      <h2>Returns &amp; refund-retention workflows (store credit, self-serve returns)</h2>
+      <span class="score">7/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Shopify shipped refund-to-store-credit (May 2025) and self-serve returns via Customer Accounts API (Dec 2024). The primitives now exist for apps to build retention-first return experiences without custom code — opening a wedge that Loop Returns owns on Shopify Plus but is under-served for SMB merchants.</p>
+    <p><strong>可能产品：</strong>Returns UX layer that defaults to incentivized store credit, integrates with Shopify&#39;s new refund/returns APIs, and A/B tests retention rates; price on recovered revenue.</p>
+    <p><strong>今日验证动作：</strong>Audit 5 mid-market Shopify brands&#39; return flows; identify which still force original-payment-only refunds and quantify their lost retention opportunity.</p>
+    <details>
+      <summary>相关信号 2 条</summary>
+      <ul><li>Refund to Store Credit</li><li>Returns now supported in Customer Accounts API</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#8</span>
+      <h2>Shopify AI/MCP 开发者工具链</h2>
+      <span class="score">7/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Shopify Dev Assistant 大改、MCP server 不断扩展到 Storefront/Admin/POS API、ShopifyQL Python SDK 上线——平台正押注 AI 辅助开发与数据分析工作流</p>
+    <p><strong>可能产品：</strong>面向 Shopify 开发者/商家的 AI 数据问答代理，基于 ShopifyQL + MCP，让非技术运营直接用自然语言跑 GMV/复购/库存周转分析</p>
+    <p><strong>今日验证动作：</strong>在 X 和 Shopify dev Discord 抓取 Dev Assistant 用户反馈，找出 SDK/MCP 缺失的功能（例如多店聚合查询），看是否能做补充工具</p>
+    <details>
+      <summary>相关信号 4 条</summary>
+      <ul><li>ShopifyQL Python SDK and CLI now available for analytics</li><li>A more powerful Dev Assistant on shopify.dev</li><li>Shopify Dev MCP now supports POS UI extensions</li><li>Shopify.dev MCP Now Supports More APIs</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#9</span>
+      <h2>POS 扩展能力爆发：线下场景数字化</h2>
+      <span class="score">7/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>POS UI 扩展开放 Camera API（扫码、证件识别、商品拍照）、文档大改、MCP 支持——线下零售自定义工作流被官方解锁</p>
+    <p><strong>可能产品：</strong>面向线下零售的 POS 扩展套件：BOPIS 自助核销、店员手持证件核验、商品图自动归档补录、线下会员卡扫描识别</p>
+    <p><strong>今日验证动作：</strong>走访 2-3 家 Shopify POS 用户（精品店、咖啡店、酒类零售），观察店员当前如何处理身份证件核验和商品图录入，确认 Camera API 是否真能省时间</p>
+    <details>
+      <summary>相关信号 2 条</summary>
+      <ul><li>POS UI extensions can now use the device camera</li><li>Revamped POS UI extensions reference</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#10</span>
+      <h2>无密码登录与令牌安全升级</h2>
+      <span class="score">6/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>shopify-account web component 默认 passwordless、Offline token 引入 60 分钟过期 + refresh token——身份安全与无密码登录正在被官方标配化</p>
+    <p><strong>可能产品：</strong>面向 Shopify 商家的统一身份与会员编排层：把店铺账户、邮件营销、线下会员、客服系统串成单一无密码身份</p>
+    <p><strong>今日验证动作：</strong>在 Shopify Plus 商家中调研多套账户体系（店铺+Klaviyo+Smile.io+Zendesk）的痛点，验证身份编排市场的实际付费意愿</p>
+    <details>
+      <summary>相关信号 3 条</summary>
+      <ul><li>Shopify-account web component for storefronts</li><li>Offline access tokens now support expiry and refresh</li><li>Metafield references added to Customer Account API</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#11</span>
+      <h2>Built for Shopify compliance &amp; pre-submission linting</h2>
+      <span class="score">5/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Shopify stacked new requirements in 6 months — automated pre-submission checks (Apr 2025), new design requirements (Dec 2024), performance/category-specific rules (Jan 2025). Manual review prep is now costly and rejection rates are high for indie developers.</p>
+    <p><strong>可能产品：</strong>Local CLI + dashboard that runs all &#39;Built for Shopify&#39; checks (perf, design, integration, category) before submission, with fix suggestions — a linter for Shopify app approval.</p>
+    <p><strong>今日验证动作：</strong>Build a 1-page checklist tool that wraps Shopify&#39;s existing automated checks; ask 10 Shopify app developers if they&#39;d pay $49/mo for a faster path to Built for Shopify status.</p>
+    <details>
+      <summary>相关信号 3 条</summary>
+      <ul><li>More automated checks for app review pre-submission page</li><li>New Built for Shopify design requirements</li><li>Performance, integration and category-specific requirements come into practice</li></ul>
+    </details>
+  </section>
+<section class="signals"><h2>Top 信号预览</h2><ol><li><a href="https://shopify.dev/changelog/shopify-ai-toolkit-connect-your-ai-tools-to-the-shopify-platform" target="_blank" rel="noreferrer">Introducing the Shopify AI Toolkit</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/shop-minis-february-2026-update" target="_blank" rel="noreferrer">Shop Minis February 2026 update</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/upcoming-markets-pricing-support-for-draft-order-checkouts" target="_blank" rel="noreferrer">Upcoming Markets pricing support for Draft Order checkouts</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/improve-your-theme-compatibility-with-remote-products" target="_blank" rel="noreferrer">Improve your theme compatibility with remote products</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/mark-image-alt-text-as-translatable" target="_blank" rel="noreferrer">Image alt text can now be translated</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/ship-carry-out-in-a-single-order-on-pos-is-now-available-for-retail-pro-merchants-using-eligible-tax-software" target="_blank" rel="noreferrer">Ship and carry out in a single order on POS is now available for Retail Pro Merchants using eligible tax software</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://www.reddit.com/r/SaaS/comments/1v8ejq5/using_linkedin_to_find_your_first_customers_as_a/" target="_blank" rel="noreferrer">Using LinkedIn to find your first customers (as a dinosaur who&#39;s done it for 20yrs)</a><span>reddit/r/SaaS</span></li>
+<li><a href="https://shopify.dev/changelog/prepare-your-app-for-migration-to-shopify-app-pricing" target="_blank" rel="noreferrer">Prepare your app for migration to Shopify App Pricing</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/carrier-services-will-no-longer-be-automatically-added-to-the-default-shipping-profile" target="_blank" rel="noreferrer">Carrier services will no longer be automatically added to the default shipping profile</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/build-app-home-as-a-ui-extension" target="_blank" rel="noreferrer">Build App Home as a UI extension</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/next-generation-events-now-available-in-developer-preview" target="_blank" rel="noreferrer">Next Generation Events now available in developer preview</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/bots-and-agents-should-identify-themselves-via-web-bot-auth" target="_blank" rel="noreferrer">Bots and agents should identify themselves via Web Bot Auth</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/add-actor-field-to-subscription-contract-and-billing-attempt-mutations" target="_blank" rel="noreferrer">Add actor field to subscription contract and billing attempt mutations</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/added-mostrelevant-value-for-collectionsortorder" target="_blank" rel="noreferrer">Added MOST_RELEVANT value for `CollectionSortOrder`</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/replacing-or-deleting-a-shopify-hosted-file-no-longer-purges-its-cdn-url" target="_blank" rel="noreferrer">Replacing or deleting a Shopify-hosted file no longer purges its CDN URL</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/fulfillment-order-move-mutation-error-codes" target="_blank" rel="noreferrer">Improved user errors on the `fulfillmentOrderMove` mutation</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/legacy-customer-accounts-are-deprecated" target="_blank" rel="noreferrer">Legacy customer accounts are now deprecated</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/making-idempotency-mandatory-for-inventory-adjustments-and-refund-mutations" target="_blank" rel="noreferrer">Making idempotency mandatory for inventory adjustments and refund mutations</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/adding-idempotency-for-inventory-adjustments-and-refund-mutations" target="_blank" rel="noreferrer">Adding idempotency for inventory adjustments and refund mutations</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/new-unlisted-product-status" target="_blank" rel="noreferrer">New: Unlisted Product Status</a><span>https://shopify.dev/changelog/feed.xml</span></li></ol></section>
+</main></body></html>
