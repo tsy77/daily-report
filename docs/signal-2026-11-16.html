@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>每日信号雷达 2026-11-16</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1020;--panel:#121a2f;--muted:#95a3b8;--text:#edf2ff;--accent:#62d6ff;--line:#24314f;--hot:#ffb86b}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at top,#17213d,var(--bg));color:var(--text);line-height:1.6}.wrap{max-width:980px;margin:0 auto;padding:32px 18px 80px}header{padding:28px 0 18px}.eyebrow{color:var(--accent);font-weight:700;letter-spacing:.08em}h1{font-size:clamp(30px,6vw,56px);line-height:1.05;margin:8px 0 12px}.meta{color:var(--muted)}.hero,.card,.signals{background:rgba(18,26,47,.82);border:1px solid var(--line);border-radius:22px;padding:22px;margin:18px 0;box-shadow:0 20px 60px rgba(0,0,0,.25)}.hero strong{color:var(--hot)}.card-head{display:flex;gap:12px;align-items:center}.card h2{flex:1;margin:0;font-size:22px}.rank,.score{border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--accent);white-space:nowrap}.score{color:var(--hot)}p{margin:10px 0}details{margin-top:12px;color:var(--muted)}summary{cursor:pointer;color:var(--accent)}a{color:var(--accent);text-decoration:none}.signals li{margin:10px 0}.signals span{display:block;color:var(--muted);font-size:13px}@media(max-width:640px){.card-head{align-items:flex-start}.card h2{font-size:18px}.wrap{padding:20px 12px 60px}}
+</style>
+</head>
+<body><main class="wrap">
+<header>
+  <div class="eyebrow">ECOMMERCE PAINPOINT RADAR</div>
+  <h1>每日信号雷达</h1>
+  <div class="meta">2026-11-16 · 聚类 30 个 · 信号 20 条预览</div>
+</header>
+<section class="hero">
+  <p>今日主判断：<strong>Shopify 应用安全合规强制升级：过期离线令牌、IP 白名单、网络访问声明、mTLS</strong></p>
+  <p>本报告基于 Reddit / Hacker News / Product Hunt / Shopify changelog / X 等公开信号自动聚类生成，用于发现电商商家的高频痛点和可验证产品机会。</p>
+</section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#1</span>
+      <h2>Shopify 应用安全合规强制升级：过期离线令牌、IP 白名单、网络访问声明、mTLS</h2>
+      <span class="score">9/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>非过期离线令牌必须在 2027-01-01 前迁移，只剩约 6 周；Shopify 明确说 AI 驱动的攻击在增多，正在收紧整个应用生态。大量中小/长尾应用开发者没有资源及时改造，到期后应用会直接失效</p>
+    <p><strong>可能产品：</strong>Shopify 应用安全合规扫描 + 迁移服务：自动检测应用是否还在用非过期令牌、是否缺 refresh token 持久化、是否配置了 IP 白名单和 network_access，输出修复 PR 或代码片段；也可以打包成固定价格的『2027 令牌迁移』外包服务</p>
+    <p><strong>今日验证动作：</strong>在 Shopify Community 和 Partner Slack/Reddit r/shopifyDev 搜『offline token migration』相关求助帖，统计近 30 天的提问量；给 10 个 App Store 上长期没更新的小应用开发者发冷邮件，提供免费令牌迁移体检，看回复率</p>
+    <details>
+      <summary>相关信号 6 条</summary>
+      <ul><li>Migrate to expiring offline access tokens before January 1, 2027</li><li>More resilient refreshes for expiring offline access tokens</li><li>Secure your app with network access rules in `shopify.app.toml`</li><li>Restrict Admin API access with an IP allowlist</li><li>Securing your app, together</li><li>Card deposit endpoint now requires mTLS certificate</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#2</span>
+      <h2>公共App强制迁移到可过期离线访问令牌（2027-01-01截止）</h2>
+      <span class="score">9/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>距 2027-01-01 截止只剩约6周，所有存量公共App必须改用 expiring offline tokens 并实现刷新逻辑；大量长尾/无人维护的小App及其商家面临授权失效、后台同步中断风险</p>
+    <p><strong>可能产品：</strong>Shopify App 令牌迁移合规扫描 + 托管刷新中间件（token refresh proxy/SDK），附带一键检测与迁移代运维服务</p>
+    <p><strong>今日验证动作：</strong>在 Shopify Community / Partner Slack / Reddit r/shopifyDev 搜索 &#39;expiring offline token&#39; 相关求助帖数量，并私信5个小型App开发者询问是否已完成迁移、是否愿付费外包</p>
+    <details>
+      <summary>相关信号 3 条</summary>
+      <ul><li>Expiring offline access tokens required for all public apps as of January 1, 2027</li><li>Expiring offline access tokens required for new public apps as of April 1, 2026</li><li>Updates effective February 27 to our Partner Program Agreement and API License and Terms of Use</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#3</span>
+      <h2>AI Agent 接管店铺运营：商家需要可信、可控的 Agent 操作层</h2>
+      <span class="score">8/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Shopify AI Toolkit 已开放 Flow 自动化管理（2026-10-28），Catalog API 可搜索非 Shopify 品牌，Web Bot Auth 对未签名 Agent 严格限流；Agent 调用店铺与跨站购物正从实验走向正式通道，但商家缺少权限审计、操作回滚与效果追踪</p>
+    <p><strong>可能产品：</strong>面向中小商家的 Agent 运营审计台：记录 AI Toolkit/Flow 变更日志、一键回滚、Agent 访问签名与限流监控、跨 Catalog 曝光追踪</p>
+    <p><strong>今日验证动作：</strong>在 Shopify Community 与 r/shopify 搜索 &#39;AI Toolkit&#39; &#39;Flow agent&#39; 相关帖，统计权限/误操作/回滚类抱怨数量；私信 5 位已用 AI Toolkit 的商家询问是否担心 Agent 误改店铺</p>
+    <details>
+      <summary>相关信号 5 条</summary>
+      <ul><li>Introducing the Shopify AI Toolkit</li><li>Shopify Flow: manage automations through AI Toolkit</li><li>Search brands that don&#39;t sell on Shopify in the Catalog API (beta)</li><li>Bots and agents should identify themselves via Web Bot Auth</li><li>Build with confidence: Shopify AI Toolkit&#39;s security check</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#4</span>
+      <h2>Shopify App 开发者迁移潮：计费、UI、API 破坏性变更集中落地</h2>
+      <span class="score">8/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Billing API 迁移到 Shopify App Pricing、Admin 新外观（2026-09-15 起）+ Polaris 2.0 RC、2026-10 多项 breaking change（运费商、地址改税、segment 语法）在同一窗口叠加，中小 App 团队人手不足、迁移风险高</p>
+    <p><strong>可能产品：</strong>Shopify App 迁移体检工具/服务：扫描代码库标出受 2026-10/2027-01 影响的调用、生成 App Pricing 方案对照、Polaris 2.0 样式迁移 checklist，可做成 CLI + 付费代迁移服务</p>
+    <p><strong>今日验证动作：</strong>在 Shopify Partners Slack/社区与 GitHub issues 搜索 &#39;App Pricing migration&#39; &#39;Polaris 2.0&#39; 报错与求助帖；在 Upwork 发布/搜索相关迁移外包需求，记录报价与数量</p>
+    <details>
+      <summary>相关信号 7 条</summary>
+      <ul><li>Prepare your app for migration to Shopify App Pricing</li><li>Polaris 2.0 release candidate</li><li>Prepare your app for the Shopify admin&#39;s new look</li><li>Carrier services will no longer be automatically added to the default shipping profile</li><li>Updated function syntax on the segment query language</li><li>Updating an order&#39;s shipping address recalculates taxes as of API version 2026-10</li><li>Build App Home as a UI extension</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#5</span>
+      <h2>旧版客户账户强制迁移：商家被迫升级新版 Customer Accounts，订单状态页/账户页的自定义与追踪能力需重建</h2>
+      <span class="score">8/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Legacy customer accounts 已于 2026-02 宣布弃用，Shopify 称 2026 年内公布最终下线日期；同时 Web Pixels 已覆盖账户页与订单状态页、Customer Account API 支持退货与多语言，新版能力已就位，迁移窗口正在收窄</p>
+    <p><strong>可能产品：</strong>客户账户迁移助手 App：一键扫描店铺对旧账户/旧 Thank you 页的依赖（脚本、追踪代码、自定义字段），生成迁移清单，并提供新版账户页的自助退货、多语言、像素追踪扩展模板</p>
+    <p><strong>今日验证动作：</strong>在 Shopify Community 和 Reddit r/shopify 搜索 &#39;legacy customer accounts&#39; / &#39;new customer accounts migration&#39; 近 3 个月的帖子，统计抱怨点（丢失功能、追踪断档、主题不兼容）数量；同时查看 App Store 中 customer accounts 类目的前 10 个 App 评论区差评</p>
+    <details>
+      <summary>相关信号 5 条</summary>
+      <ul><li>Legacy customer accounts are now deprecated</li><li>Web Pixels now run on Customer Accounts and Order Status Page</li><li>Returns now supported in Customer Accounts API</li><li>`@inContext` directive added to the Customer Account API</li><li>New webhook to track updates to checkout and accounts configuration</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#6</span>
+      <h2>Shopify 应用安全合规截止潮：IP 白名单 / 离线 token / 数据删除时限</h2>
+      <span class="score">8/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Shopify 要求所有公开应用在 11 月 20 日前（用 bulk ops 的为 11 月 12 日）配置 IP 白名单，离线 token 有新的到期日期，客户数据删除时限从 10 天缩短到 5 天（11 月 10 日起生效）。这些截止日都卡在黑五前，serverless 托管的应用还得改用 ASN 才能配置</p>
+    <p><strong>可能产品：</strong>Shopify 应用合规体检 + 固定出口 IP 代理服务：一键扫描应用是否满足 IP 白名单、token 轮换、GDPR 删除 webhook 5 天时限，并为 Vercel/Cloudflare 上的 serverless 应用提供静态出口 IP</p>
+    <p><strong>今日验证动作：</strong>在 Shopify Community 开发者论坛和 r/shopifyDev 搜索 &#39;IP allowlist&#39; &#39;ASN&#39; &#39;serverless&#39; 相关求助帖，统计数量；私信 5 个托管在 Vercel 上的小型应用开发者，问他们白名单配置卡在哪一步、愿不愿意为静态 IP 代理每月付 $10-20</p>
+    <details>
+      <summary>相关信号 8 条</summary>
+      <ul><li>App security updates: IP allowlist is now required</li><li>App security updates: Thank you, plus what&#39;s required next</li><li>App IP allowlists now support apps with serverless hosting through ASNs</li><li>App IP allowlists now support IP addresses and ASNs together, and up to 250 IPs</li><li>Security update: Offline token dates, new security features</li><li>Customer data erasure requests updated from 10 days to 5</li><li>Updated handling of customer data erasure requests with recent orders</li><li>Merchants now see partner details on collaborator requests</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#7</span>
+      <h2>AI 代理购物（Agentic Commerce）基础设施落地：WebMCP、富媒体 Catalog</h2>
+      <span class="score">8/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Shopify 已在 Liquid/Hydrogen 店铺默认开放 WebMCP 工具，AI 代理可以直接搜索商品、改购物车、进结账；Catalog API 开始返回视频和 3D 媒体。商家还不知道自己的店铺在 AI 代理眼里是什么样，『给代理做 SEO』这个需求刚出现，还没人满足</p>
+    <p><strong>可能产品：</strong>AI 代理可见性/转化优化工具：模拟 AI 代理通过 WebMCP 逛店，给商品数据质量打分（标题、属性、媒体、库存），给出优化建议，并跟踪代理带来的流量和下单</p>
+    <p><strong>今日验证动作：</strong>用 Chrome WebMCP 预览版对 5 家 Shopify 店铺跑一遍代理调用，记录失败或信息缺失的环节；在 X/LinkedIn 发一篇『你的店铺在 AI 代理眼里长什么样』的对比帖，看商家的互动和私信</p>
+    <details>
+      <summary>相关信号 2 条</summary>
+      <ul><li>WebMCP support for Liquid and Hydrogen storefronts</li><li>Filter Catalog search results by media type</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#8</span>
+      <h2>API 版本破坏性变更堆积，App开发者迁移负担重</h2>
+      <span class="score">8/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>2026-07 版本集中出现 Collection 多源模型替换 ruleSet、DraftOrderLineItem.grams 移除、metaobject 访问枚举删除、authorizationCode 弃用、inventorySetQuantities CAS 语法变更等，加上 CLI 4.0 移除旧 flag，存量App随时可能静默出错</p>
+    <p><strong>可能产品：</strong>Shopify API Breaking-Change 雷达：扫描App代码库/GraphQL查询，自动比对 changelog 标注受影响字段并生成迁移PR（AI codemod）</p>
+    <p><strong>今日验证动作：</strong>抓取 shopify.dev changelog 近12个月 &#39;removed/deprecated&#39; 条目做统计，在 GitHub 搜索仍使用 DraftOrderLineItem.grams / ruleSet / authorizationCode 的公开仓库数量，评估需求规模</p>
+    <details>
+      <summary>相关信号 8 条</summary>
+      <ul><li>New Collection model and APIs now available</li><li>DraftOrderLineItem.grams field removed in 2026-07</li><li>Removing deprecated PRIVATE and PUBLIC_READ enums on metaobject definitions</li><li>Deprecation of `OrderTransaction.authorizationCode` in favor of `OrderTransaction.paymentId`</li><li>New compare and swap syntax for the `inventorySetQuantities` mutation</li><li>Shopify CLI 4.0: SemVer, auto-updates, removing deprecated flags and commands</li><li>The Shopify CLI app release `--force` flag is deprecated and will be removed</li><li>Bare query strings no longer bust the cache for assets</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#9</span>
+      <h2>跨境多市场的价格/退货/税务一致性难题</h2>
+      <span class="score">7/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Markets 定价影响 Draft Order 结账、退货政策 profile 按市场结构化、改地址自动重算税、App Store 显示本地币价——多市场规则越来越结构化，但商家难以核对各市场价格、退货规则与税是否一致</p>
+    <p><strong>可能产品：</strong>多市场合规与一致性巡检 App：按市场对比价格、退货规则、税费与翻译（含图片 alt 文本），异常时告警</p>
+    <p><strong>今日验证动作：</strong>找 3-5 家开通 2 个以上 Markets 的 Shopify 店铺，模拟不同国家地址下单至结账页，记录价格/退货/税展示不一致的案例，作为冷启动素材</p>
+    <details>
+      <summary>相关信号 5 条</summary>
+      <ul><li>Upcoming Markets pricing support for Draft Order checkouts</li><li>Return policy profiles are now available in the GraphQL Admin API</li><li>Updating an order&#39;s shipping address recalculates taxes as of API version 2026-10</li><li>Shopify App Store: Estimated local-currency prices</li><li>Image alt text can now be translated</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#10</span>
+      <h2>App 稳定性与安全可观测：扩展加载失败与 AI 生成代码风险</h2>
+      <span class="score">7/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Dev Dashboard 刚开始显示 checkout/客户账户扩展加载失败（2026-11-06），AI Toolkit 推出安全检查，说明 AI 加速出码后故障与漏洞增多，而官方仅提供基础视图</p>
+    <p><strong>可能产品：</strong>Shopify App APM：扩展失败按店铺/版本告警、与部署关联、Next Gen Events/Webhook 投递监控、AI 生成代码安全扫描</p>
+    <p><strong>今日验证动作：</strong>查看 Dev Dashboard 新功能文档的字段与限制，在开发者社区发帖询问&#39;扩展加载失败通常多久才发现&#39;，收集 10 条回复评估付费意愿</p>
+    <details>
+      <summary>相关信号 4 条</summary>
+      <ul><li>Dev Dashboard now shows when checkout and customer account UI extensions fail to load</li><li>Build with confidence: Shopify AI Toolkit&#39;s security check</li><li>Next Generation Events now available in developer preview</li><li>Meet Shopify Dev Assistant: Build Shopify Apps Faster</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#11</span>
+      <h2>多仓库存与履约一致性：超卖、重复扣减、跨区可售规则变化导致库存与订单数据错乱</h2>
+      <span class="score">7/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>库存调整与退款 mutation 强制要求幂等键，&#39;Sell from all locations&#39; 被移除、购物车数量上限改为按市场区域库存计算，履约订单支持多重 hold——平台规则收紧后，自研/老旧库存同步工具大量报错或静默失效</p>
+    <p><strong>可能产品：</strong>库存同步健康监控 SaaS：对接 ERP/WMS 与 Shopify，检测缺少幂等键的重复调整、跨区域可售库存不一致、卡住的 fulfillment hold，并实时告警与自动修复</p>
+    <p><strong>今日验证动作：</strong>在 GitHub 搜索仍在调用 inventoryAdjustQuantities 但未传 idempotency key 的开源 Shopify 集成项目，并在 Shopify Community 搜索 &#39;oversell multiple locations&#39; / &#39;cart quantity limit market&#39; 帖子，记录 10 个真实案例的痛点</p>
+    <details>
+      <summary>相关信号 7 条</summary>
+      <ul><li>Making idempotency mandatory for inventory adjustments and refund mutations</li><li>Adding idempotency for inventory adjustments and refund mutations</li><li>Removal of support for the &quot;Sell from all locations&quot; fulfillable inventory setting</li><li>Cart quantity limits are now determined by market region</li><li>Apply multiple holds to a single fulfillment order</li><li>Improved user errors on the `fulfillmentOrderMove` mutation</li><li>Cart Delivery Address Management</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#12</span>
+      <h2>跨境税务与商品合规数据：HS 编码、税码、单位价格展示要求让中小卖家手工维护成本激增</h2>
+      <span class="score">7/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>GraphQL 支持全球通用 HS 编码，ProductVariant.taxCode 随 Avalara 应用弃用而废弃，新增单位价格本地化 Liquid filter——叠加各国关税政策频繁变化，商品级合规数据成为跨境卖家的刚需</p>
+    <p><strong>可能产品：</strong>AI 商品合规数据填充工具：根据商品标题/描述/图片自动推荐 HS 编码与税务分类，批量写回 Shopify，并为欧盟等市场自动生成单位价格展示</p>
+    <p><strong>今日验证动作：</strong>抽取 20 个跨境 Shopify 店铺商品，用 LLM 试分类 HS 编码并与报关行/官方查询结果对比准确率；同时在 App Store 搜索 &#39;HS code&#39; 查看现有 App 数量、定价与差评</p>
+    <details>
+      <summary>相关信号 3 条</summary>
+      <ul><li>Global HS code is now supported  in GraphQL Admin API</li><li>Deprecation of the `ProductVariant.taxCode` field</li><li>New Liquid filter for displaying unit prices</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#13</span>
+      <h2>AI 原生 Shopify 开发与数据分析：MCP、ShopifyQL 开放让 AI 代理可以直接写代码、查经营数据</h2>
+      <span class="score">7/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Shopify Dev MCP 已支持 Liquid 校验与 Functions 生成，Polaris 成为统一稳定组件库，ShopifyQL 可通过 GraphQL Admin API 调用——AI 代理构建 App 与分析数据的门槛大幅降低</p>
+    <p><strong>可能产品：</strong>面向商家的 AI 经营分析助手：用自然语言提问（如&#39;上周哪个渠道退货率最高&#39;），自动生成 ShopifyQL 查询并输出图表与行动建议；或面向代理商的 AI 主题/Liquid 修改 QA 工具</p>
+    <p><strong>今日验证动作：</strong>用 shopifyqlQuery 在开发店铺上跑通 5 个常见经营问题的自然语言→ShopifyQL 原型，并找 3 位 Shopify 商家展示，询问是否愿意为此每月付费 20-50 美元</p>
+    <details>
+      <summary>相关信号 4 条</summary>
+      <ul><li>ShopifyQL now available as `shopifyqlQuery` within the GraphQL Admin API</li><li>Shopify Dev MCP now supports Liquid</li><li>Shopify Functions support in Dev Assistant and the shopify.dev MCP server</li><li>Polaris Goes Stable: The Future of Shopify App Development</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#14</span>
+      <h2>AI 生成视频广告钩子与商品素材（基于真实评论）</h2>
+      <span class="score">7/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>进入礼品季，TikTok Shop 爆款几乎都在 $35 以下，卖家对短视频素材的需求在冲高；卖家都在问钩子从哪来，AI 商品图和视频工具接连发布，但同质化严重，‘从自家客户评论里挖钩子’这个切入点还没人做透</p>
+    <p><strong>可能产品：</strong>评论 → 广告钩子生成器：抓取商店或亚马逊评论，提炼痛点和原话，生成 TikTok/Reels 前 3 秒钩子和脚本，再结合 TikTok Shop 爆款数据给出选品和素材建议</p>
+    <p><strong>今日验证动作：</strong>在原帖下回复，提出免费帮 5 位卖家用评论生成 10 条钩子，收集 CTR 反馈；同时手动拉 20 条某爆款商品的评论，产出钩子样例，发到 r/ecommerce 看互动</p>
+    <details>
+      <summary>相关信号 4 条</summary>
+      <ul><li>Sellers: where do your video ad hooks come from?</li><li>ReCardEx – AI product photos, infographics and videos for e-commerce sellers</li><li>Show HN: A tool that helps users create viral videos to promote products</li><li>I pulled the best selling TikTok Shop products going into gift season (updated Nov 2026). Almost everything is under $35.</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#15</span>
+      <h2>跨境税费与支付：欧盟→美国关税、付款给中国供应商的成本</h2>
+      <span class="score">7/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>美国取消小额豁免后，欧盟小品牌发美国时在结账页遇到关税计算混乱；亚马逊欧洲卖家付款给深圳供应商，银行电汇每笔约 £30，汇率也差，在 Airwallex、WorldFirst、Unlimit 之间难以选择</p>
+    <p><strong>可能产品：</strong>跨境落地成本计算器 + 支付通道比价工具：输入品类/HS 编码、发货国和目的国，给出关税、税费和 DDP/DDU 建议；同时对比各支付通道的真实 FX 点差和手续费（可以靠联盟返佣变现）</p>
+    <p><strong>今日验证动作：</strong>整理 Airwallex、WorldFirst、Unlimit、Wise 付人民币时的真实费率对比表，发到 r/ecommerce 和 r/FulfillmentByAmazon 看反响；查一下这几家是否有联盟或推荐计划</p>
+    <details>
+      <summary>相关信号 2 条</summary>
+      <ul><li>Question regarding tariffs and taxes shipping from the EU to US</li><li>airwallex vs worldfirst vs unlimit for paying china suppliers?</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#16</span>
+      <h2>API 版本破坏性变更与 webhook→Events 迁移带来的维护负担</h2>
+      <span class="score">7/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>2027-01 版本将移除 automaticDiscounts 查询；Next Gen Events 已正式取代经典 webhook；还有一堆枚举值/字段语义变化（FULFILLMENT_NOT_REQUIRED、POS 折扣百分比值修正、parseWarnings 提示废弃字段）。季度版本节奏让小团队疲于应付，静默故障风险高</p>
+    <p><strong>可能产品：</strong>Shopify API 变更影响分析器：接入应用代码仓库，按 changelog 自动识别受影响的查询、枚举和 webhook，生成迁移清单和测试用例；也可以加一个 webhook→Events 的一键迁移助手</p>
+    <p><strong>今日验证动作：</strong>写脚本抓 shopify.dev changelog 中带『removed / breaking / new enum value』的条目，挑 3 个开源 Shopify 应用跑一遍 grep 匹配，看能发现多少真实受影响的代码；把结果发到 r/shopifyDev 收集反馈</p>
+    <details>
+      <summary>相关信号 7 条</summary>
+      <ul><li>The `automaticDiscounts` query is removed in API version 2027-01</li><li>More control over commerce updates with Next Gen Events</li><li>OrderDisplayFulfillmentStatus now returns FULFILLMENT_NOT_REQUIRED for orders with no items to fulfill</li><li>POS UI extensions now return percentage values for percentage discounts</li><li>Added parseWarnings to ShopifyqlQueryResponse</li><li>Polaris CDN 1.1 is now stable</li><li>Polaris CDN 1.1 release candidate</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#17</span>
+      <h2>Checkout/客户账户扩展迁移到 Polaris Web Components</h2>
+      <span class="score">7/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>官方发布迁移指南与 AI Toolkit，说明 React/JS 扩展到 Preact+Polaris web components 的迁移成本高且是强制方向；旧 Polaris 文档按12个月版本策略下线，同时 checkout 扩展默认改为非阻塞，行为变化易引发线上问题</p>
+    <p><strong>可能产品：</strong>面向代理商/自由开发者的 Checkout 扩展迁移服务包（固定价迁移 + 回归测试），或基于 AI Toolkit 的批量迁移工具</p>
+    <p><strong>今日验证动作：</strong>在 Upwork/Shopify Experts 搜索 &#39;checkout extension migration&#39; &#39;Polaris web components&#39; 相关需求与报价，统计近30天发单数</p>
+    <details>
+      <summary>相关信号 4 条</summary>
+      <ul><li>Shopify AI Toolkit for upgrading extensions to Polaris web components</li><li>Polaris web components migration guides now available for Checkout and Customer Account UI extensions</li><li>Removing outdated Polaris reference docs</li><li>Checkout UI extensions now default to non-blocking behavior</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#18</span>
+      <h2>智能陈列与订阅/全渠道履约的灵活化</h2>
+      <span class="score">6/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Collection Sources API 支持多源组合与变体级陈列、MOST_RELEVANT 排序、Draft Order 支持订阅计划、新一代履约与 POS 混合发货，商品组织与履约逻辑开放给第三方定制</p>
+    <p><strong>可能产品：</strong>AI 智能集合/陈列 App：基于销量与库存自动生成多源集合并按市场排序；或面向 B2B/电话销售的订阅草稿单工具</p>
+    <p><strong>今日验证动作：</strong>在 Shopify App Store 搜索 &#39;smart collection&#39; &#39;merchandising&#39; 类 App，统计 Top 10 的评分、差评关键词与是否已支持 Collection Sources API</p>
+    <details>
+      <summary>相关信号 6 条</summary>
+      <ul><li>Introducing the new Collection Sources API</li><li>Added MOST_RELEVANT value for `CollectionSortOrder`</li><li>Add selling plans to draft order line items with the Admin GraphQL API</li><li>The next generation of Shopify fulfillment is coming</li><li>Ship and carry out in a single order on POS is now available for Retail Pro Merchants using eligible tax software</li><li>Add actor field to subscription contract and billing attempt mutations</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#19</span>
+      <h2>退款留存与促销精细化：用店铺余额替代现金退款、更精细的折扣与商品可见性控制</h2>
+      <span class="score">6/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Shopify 原生支持退款到 store credit、折扣 context 字段区分适用客户、新增 Unlisted 商品状态与礼品卡上限查询——商家在获客成本高企时更想把退款留在店内、做私密/定向促销</p>
+    <p><strong>可能产品：</strong>退货挽留与 store credit 激励工具：在退货流程中提供&#39;选店铺余额多送 10%&#39;选项，并配合 Unlisted 商品做 VIP 专属款/私密链接促销</p>
+    <p><strong>今日验证动作：</strong>调研 Loop Returns、AfterShip Returns 等现有退货 App 是否已支持 store credit 加赠，统计其定价门槛；在 Reddit 询问中小商家退货中现金退款比例与对 store credit 的接受度</p>
+    <details>
+      <summary>相关信号 4 条</summary>
+      <ul><li>Refund to Store Credit</li><li>Introducing the new `context` field to specify discount eligibility</li><li>New: Unlisted Product Status</li><li>View gift card maximum values</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#20</span>
+      <h2>Shopify 平台 API 被迫迁移：Scripts 下线、REST 弃用、Tax 托管模式</h2>
+      <span class="score">6/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Shopify Scripts 已于 2026 年 6 月 30 日下线，商家必须改用 Functions；REST 商品图片接口已弃用，需要迁到 GraphQL media；Tax 托管模式会校验 Admin API 的写入，旧集成可能静默失败。存量商家和应用在旺季前要集中补迁移</p>
+    <p><strong>可能产品：</strong>Scripts → Functions 迁移服务（代码转换器 + 代做服务），外加一个 API 弃用扫描器：检测应用或商店里仍在调用已弃用 REST 接口、以及与 Tax 托管模式冲突的写入</p>
+    <p><strong>今日验证动作：</strong>在 Shopify Plus 社区和 Upwork 上搜索 &#39;Shopify Scripts migration&#39; &#39;Functions&#39; 外包需求，记录报价区间；挑 3 段典型的 Ruby Script，试着用 LLM 转成 Function，评估自动化能覆盖多少</p>
+    <details>
+      <summary>相关信号 4 条</summary>
+      <ul><li>Shopify Scripts will be deprecated on June 30, 2026</li><li>Admin REST API product image is now deprecated</li><li>Managed mode for Shopify Tax</li><li>Flow: Improved Send HTTP request action enables secure connections and returns data to the workflow</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#21</span>
+      <h2>应用开发者商业化工具：App Pricing 迁移、内嵌分析、评价信任</h2>
+      <span class="score">6/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Shopify 推出 App Pricing 并提供存量订阅迁移工具，套餐上限翻倍，支持按事件计费（含小数/负数）；Shopify Analytics 开放给应用做商家侧报表；App Store 评价审核收紧。开发者需要重新设计定价，也需要合规地获取评价</p>
+    <p><strong>可能产品：</strong>面向 Shopify 应用开发者的定价实验 + 收入分析 SaaS：模拟不同 App Pricing 套餐和用量计费方案的收入，跟踪迁移后的流失；附带合规的评价邀请时机推荐</p>
+    <p><strong>今日验证动作：</strong>访谈 5 个 Shopify 应用开发者（Partner 社区 / Indie Hackers），问他们迁移到 App Pricing 的顾虑和用量计费的设计难点；看现有工具（如 Partner Dashboard 指标）在哪里不够用</p>
+    <details>
+      <summary>相关信号 4 条</summary>
+      <ul><li>Move existing subscriptions to Shopify App Pricing</li><li>App Pricing: more plans, no-charge plan testing, and negative and fractional App Events</li><li>Full-stack capabilities to power app analytics</li><li>Strengthening trust in App Store reviews</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#22</span>
+      <h2>履约与订单后链路新能力：买家自助改单、包装尺寸、入库取消、按市场配置物流</h2>
+      <span class="score">6/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>2026-10/2027-01 版本一次性开放了买家申请改单的 API 和 webhook、包装后尺寸读写、入库单取消动作、按市场配置运费、配送选项 metafield。这些都是之前客服和仓储环节的手工痛点，现在可以自动化了</p>
+    <p><strong>可能产品：</strong>订单后自动化应用：买家自助取消未发货商品，并自动审批、退款、改库存；结合包装尺寸做运费精算和箱型推荐；按市场配置配送规则</p>
+    <p><strong>今日验证动作：</strong>在 Shopify App Store 搜『order editing』『cancel order』类应用，读近 3 个月的差评，整理出 Top 5 抱怨；对照新 API 判断哪些痛点现在能解决，做一页落地页测试等候名单转化</p>
+    <details>
+      <summary>相关信号 7 条</summary>
+      <ul><li>New APIs for buyer-requested order edits</li><li>Manage packed product dimensions with the GraphQL Admin API</li><li>Adding a canceled receive action to the inventory shipments API</li><li>Market-driven shipping Admin API</li><li>Delivery options in Shopify Functions input now expose their metafields</li><li>Orders webhooks now include selling_plan_id on line items</li><li>Discount application information now available for draft orders on the Customer Account API</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#23</span>
+      <h2>退货数据精细化：退货原因与交易关联</h2>
+      <span class="score">6/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>ReturnReasonDefinition 替代旧枚举、Return 对象可直接取 transactions，商家首次能以结构化方式分析品类级退货原因并对账退款，退货分析工具的数据门槛大幅降低</p>
+    <p><strong>可能产品：</strong>退货原因洞察看板：按品类/SKU 聚合退货原因与退款金额，给出尺码/描述/质量改进建议</p>
+    <p><strong>今日验证动作：</strong>在 Shopify App Store 检索 returns analytics 类App，查看评论中关于&#39;无法按原因分析&#39;&#39;退款对不上&#39;的抱怨数量，找3个服装类商家访谈</p>
+    <details>
+      <summary>相关信号 2 条</summary>
+      <ul><li>New Return Reason Definitions API for Better Return Insights</li><li>Access transactions on the Return object</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#24</span>
+      <h2>Shopify 生态向更多开发者与社交内容开放</h2>
+      <span class="score">5/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>官方 PHP/Python 包降低非 JS 开发者门槛，Shop Minis 支持 UGC 商品标记，远程商品跨店展示，Build Awards 突出商家价值导向——新进入者和新形态入口在增加</p>
+    <p><strong>可能产品：</strong>面向 Python/PHP 开发者的 Shopify App 起步模板与教程；或基于 Shop Minis UGC 的买家秀种草小程序</p>
+    <p><strong>今日验证动作：</strong>查看 shopify-app-php / Python 包的下载量与 GitHub star/issue 增速，判断开发者涌入规模</p>
+    <details>
+      <summary>相关信号 5 条</summary>
+      <ul><li>Build Shopify apps in PHP and Python with new official packages</li><li>Shop Minis February 2026 update</li><li>Improve your theme compatibility with remote products</li><li>Meet the 2026 Shopify Build Award winners</li><li>First sign-ins to customer accounts now set Customer.state and send customers/enable webhooks</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#25</span>
+      <h2>App 开发者合规与迁移成本上升：分成调整、Built for Shopify 门槛提高、REST→GraphQL 及资源行为变更</h2>
+      <span class="score">5/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Shopify 调整开发者分成，Built for Shopify 新增性能/设计/类目要求，审核加入自动化检查，REST 图片资源改返回 GraphQL GID、CDN 文件不再主动刷新——中小 App 开发者维护负担持续加重</p>
+    <p><strong>可能产品：</strong>Shopify App 合规体检服务：自动扫描 App 的 BFS 性能/设计要求达标情况、审核预检项、已弃用 API 调用与 REST 依赖，输出整改报告</p>
+    <p><strong>今日验证动作：</strong>整理 Built for Shopify 最新要求清单，私信 5 位 App Store 中小开发者询问最耗时的合规/迁移项及愿付价格</p>
+    <details>
+      <summary>相关信号 7 条</summary>
+      <ul><li>Update to Shopify’s app developer revenue share</li><li>More automated checks for app review pre-submission page</li><li>Performance, integration and category-specific requirements come into practice</li><li>New Built for Shopify design requirements</li><li>Raising the bar: 2025 Shopify Build Awards winners</li><li>Product image resource in REST now returns a media image GID to streamline migration to GraphQL</li><li>Replacing or deleting a Shopify-hosted file no longer purges its CDN URL</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#26</span>
+      <h2>小卖家增长瓶颈：单人运营、转化优化、品牌声誉</h2>
+      <span class="score">5/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>单人店主的时间都耗在客服、广告和写博客上，试过 AI 但效果不够好；营收到瓶颈后不知道怎么扩张（比如稀缺货源的古着店），遇到虚假指控又缺乏应对手段。旺季把这些问题都放大了</p>
+    <p><strong>可能产品：</strong>面向月营收 $1k-10k 小店的‘AI 运营助理 + 人工兜底’订阅：客服自动回复、转化率体检清单（运费说明、信任标识），附带品牌口碑监控和差评/虚假指控应对模板</p>
+    <p><strong>今日验证动作：</strong>在 3 个帖子下汇总回复者提到的具体痛点和已用工具，做成表格；找 5 位单人店主做 15 分钟访谈，问他们愿意最先花钱外包哪一项</p>
+    <details>
+      <summary>相关信号 4 条</summary>
+      <ul><li>Running my store solo at $1k a month. What did you delegate first?</li><li>What&#39;s one small change that actually improved your online store&#39;s conversion rate?</li><li>How do you handle false accusations online that are hurting your brand&#39;s reputation?</li><li>How to increase my revenue - selling curated/rare vintage</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#27</span>
+      <h2>线下 POS 与店铺应用扩展：硬件打印、版本识别、Shop 登录、Rollouts</h2>
+      <span class="score">5/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>POS 扩展可以直接驱动小票打印机，也能识别当前运行的版本；Sign in with Shop 开放给心愿单、到货提醒、会员等店铺应用；Rollouts API 让应用能感知营销活动和实验排期。线下零售和全渠道应用的门槛降低了</p>
+    <p><strong>可能产品：</strong>POS 小票营销插件：在小票上打印个性化优惠码、二维码会员入口，与 Sign in with Shop 打通线上线下身份；并根据 Rollouts 自动切换活动内容</p>
+    <p><strong>今日验证动作：</strong>找 3 家使用 Shopify POS 的线下门店（小红书 / 本地商圈），问小票目前的用途，以及他们是否愿意为小票营销付费；评估 Printing API 支持的打印机型号覆盖率</p>
+    <details>
+      <summary>相关信号 4 条</summary>
+      <ul><li>POS UI extensions can now print directly to hardware receipt printers</li><li>Identify the published version running in a POS extension</li><li>Sign in with Shop opens to storefront apps</li><li>Rollouts queries and webhooks in the Admin GraphQL API</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#28</span>
+      <h2>App 可观测性与上架效率</h2>
+      <span class="score">5/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>App Events API 让开发者在 Dev Dashboard 统一查看自定义事件、webhook、Function 执行；新提交审核流程加快上架，小团队对低成本监控与审核合规辅助的需求上升</p>
+    <p><strong>可能产品：</strong>Shopify App 一体化运维面板：App Events 埋点SDK + 告警 + 审核前合规自检清单</p>
+    <p><strong>今日验证动作：</strong>试用 App Events API 接入一个demo App，评估其缺失的告警/留存分析能力，并在 Partner 社区发帖调研开发者最想要的监控指标</p>
+    <details>
+      <summary>相关信号 4 条</summary>
+      <ul><li>App Events: See app usage and performance data in your Dev Dashboard</li><li>App Events: See all your app activity in one place</li><li>New app submission experience in the Partner Dashboard</li><li>Admin intents now support Settings</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#29</span>
+      <h2>线下POS与履约/库存细节能力扩展</h2>
+      <span class="score">5/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>POS 扩展开放相机API（扫证件、拍商品）、折扣计算改为按件、3PL 可上报履约进度、InventoryLevel 新增 isActive、购物车元字段自动带入订单，全渠道商家的线下与履约场景可做更多垂直工具</p>
+    <p><strong>可能产品：</strong>POS 相机扫描插件（年龄验证/以旧换新拍照登记）或面向3PL的履约进度同步连接器</p>
+    <p><strong>今日验证动作：</strong>联系2-3家有线下门店的 Shopify 商家，确认年龄验证/拍照登记是否为真实痛点，并查看 App Store 同类POS扩展数量</p>
+    <details>
+      <summary>相关信号 9 条</summary>
+      <ul><li>POS UI extensions can now use the device camera</li><li>Minor rounding change for custom line item discounts in POS 11.5</li><li>Report Fulfillment Order progress with new fulfillmentOrderReportProgress GraphQL mutation</li><li>Add `isActive` field to `InventoryLevel`</li><li>Automatically copy cart metafields to orders at checkout completion</li><li>Shopify-account web component for storefronts</li><li>Metafield references added to Customer Account API</li><li>Migrate metafields with `shopify app import-custom-data-definitions`</li><li>Adding access field to StandardMetaobjectDefinitionTemplate</li></ul>
+    </details>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="rank">#30</span>
+      <h2>Shopify 应用开发者工具链：定价、CI/CD、Sidekick 集成</h2>
+      <span class="score">4/10</span>
+    </div>
+    <p><strong>为什么现在：</strong>Shopify App Pricing 现在支持不限数量的私有方案和目标店铺，CI/CD 部署对所有应用开放，Sidekick Launch API 允许应用直接唤起 AI 助手，应用开发者的分销和集成方式正在变化</p>
+    <p><strong>可能产品：</strong>Shopify 应用开发者脚手架/模板：内置私有定价方案管理、GitHub Actions 部署、Sidekick 深度链接和安全合规默认配置</p>
+    <p><strong>今日验证动作：</strong>查看 GitHub 上现有的 Shopify 应用模板（包括官方模板）是否已经支持 IP 白名单、automation token 和 Sidekick，找出缺口</p>
+    <details>
+      <summary>相关信号 8 条</summary>
+      <ul><li>Unlimited private plans and target stores in Shopify App Pricing</li><li>App deployment in CI/CD is now available for all apps</li><li>Start Sidekick conversations from your app</li><li>Session tokens and app listings automatically checked before submitting for app review</li><li>Conversion tracking fields added to MarketingEngagementCreate</li><li>New arguments added to `statusPageUrl` field on the `Order` object</li><li>The Dev Dashboard is now multi-lingual</li><li>Konfig: A Framework and Toolset for Generating SDKs for Your REST API</li></ul>
+    </details>
+  </section>
+<section class="signals"><h2>Top 信号预览</h2><ol><li><a href="https://shopify.dev/changelog/shopify-build-award-2026" target="_blank" rel="noreferrer">Meet the 2026 Shopify Build Award winners</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/shopify-ai-toolkit-connect-your-ai-tools-to-the-shopify-platform" target="_blank" rel="noreferrer">Introducing the Shopify AI Toolkit</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/introducing-the-new-collections-api" target="_blank" rel="noreferrer">Introducing the new Collection Sources API</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/shop-minis-february-2026-update" target="_blank" rel="noreferrer">Shop Minis February 2026 update</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/meet-shopify-dev-assistant-build-shopify-apps-faster-than-ever" target="_blank" rel="noreferrer">Meet Shopify Dev Assistant: Build Shopify Apps Faster</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/upcoming-markets-pricing-support-for-draft-order-checkouts" target="_blank" rel="noreferrer">Upcoming Markets pricing support for Draft Order checkouts</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/improve-your-theme-compatibility-with-remote-products" target="_blank" rel="noreferrer">Improve your theme compatibility with remote products</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/mark-image-alt-text-as-translatable" target="_blank" rel="noreferrer">Image alt text can now be translated</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/ship-carry-out-in-a-single-order-on-pos-is-now-available-for-retail-pro-merchants-using-eligible-tax-software" target="_blank" rel="noreferrer">Ship and carry out in a single order on POS is now available for Retail Pro Merchants using eligible tax software</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/you-can-now-see-how-often-your-checkout-and-customer-account-ui-extensions-fail-to-load-because-of-your-app-and-on-which-stores-in-the-dev-dashboard" target="_blank" rel="noreferrer">Dev Dashboard now shows when checkout and customer account UI extensions fail to load</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/estimated-local-currency-prices" target="_blank" rel="noreferrer">Shopify App Store: Estimated local-currency prices</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/shopify-flow-manage-automations-through-admin-api" target="_blank" rel="noreferrer">Shopify Flow: manage automations through AI Toolkit</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/first-sign-ins-to-new-customer-accounts-now-set-customer-state-and-send-customers-enable" target="_blank" rel="noreferrer">First sign-ins to customer accounts now set Customer.state and send customers/enable webhooks</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/add-selling-plans-to-draft-order-line-items-with-the-admin-graphql-api" target="_blank" rel="noreferrer">Add selling plans to draft order line items with the Admin GraphQL API</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/search-brands-that-don-t-sell-on-shopify-in-the-catalog-api-beta" target="_blank" rel="noreferrer">Search brands that don&#39;t sell on Shopify in the Catalog API (beta)</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/build-more-secure-apps-with-shopify-s-ai-toolkit-security-check" target="_blank" rel="noreferrer">Build with confidence: Shopify AI Toolkit&#39;s security check</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/updated-function-syntax-on-the-segment-query-language" target="_blank" rel="noreferrer">Updated function syntax on the segment query language</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/return-policy-profiles-are-now-available-in-the-graphql-admin-api" target="_blank" rel="noreferrer">Return policy profiles are now available in the GraphQL Admin API</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/polaris-2-0-release-candidate" target="_blank" rel="noreferrer">Polaris 2.0 release candidate</a><span>https://shopify.dev/changelog/feed.xml</span></li>
+<li><a href="https://shopify.dev/changelog/prepare-your-app-for-the-shopify-admins-new-look" target="_blank" rel="noreferrer">Prepare your app for the Shopify admin&#39;s new look</a><span>https://shopify.dev/changelog/feed.xml</span></li></ol></section>
+</main></body></html>
